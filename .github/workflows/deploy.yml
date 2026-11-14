@@ -16,8 +16,14 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+        
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+        with:
+          # Explicitly set Node version to avoid deprecation warnings
+          node-version: 20 
+          # Change this to 'pnpm@latest' or 'yarn' if you used those instead of npm
+          package-manager: npm@latest 
 
   deploy:
     needs: build
