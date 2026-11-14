@@ -20,10 +20,9 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
-          # Explicitly set Node version to avoid deprecation warnings
-          node-version: 20 
-          # Change this to 'pnpm@latest' or 'yarn' if you used those instead of npm
-          package-manager: npm@latest 
+          # 👇 THIS IS THE FIX: Force Node.js 22
+          node-version: 22
+          package-manager: npm@latest
 
   deploy:
     needs: build
