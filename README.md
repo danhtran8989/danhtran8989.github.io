@@ -1,6 +1,8 @@
-# danhtran8989.github.io
+# danhtran2mind.github.io
 
 A personal portfolio and GitHub Pages site built with [Astro](https://astro.build). The layouts are based on the seven Figma templates in `figma_template/` — About, Blog, CV, Resume, Projects, Certificates, and Certifications — restyled after the Free Portfolio landing template in `figma_template/others/`.
+
+Content is real: Tran Pham Cong Danh (DanhTran2Mind), AI engineer, M.D. and M.Eng., with 20 repositories and 61 certificates imported from the al-folio site in `data/danhtran2mind.github.io/`.
 
 ## Visual system
 
@@ -51,13 +53,13 @@ npm run preview   # preview the production build
 
 All page content is configured in YAML files under `src/config/`:
 
-- `site.yaml` — name, domain, email, navigation, social links, and footer labels (`eyebrow`, `note`, `linksLabel`, `contactLabel`).
+- `site.yaml` — name, alias, domain, email, navigation, social links, and footer labels (`eyebrow`, `note`, `linksLabel`, `contactLabel`). Nav entries can be plain links (`href`) or dropdown groups (`children`).
 - `home.yaml` — landing page copy: hero, about preview, sections, and principles heading.
-- `about.yaml`, `cv.yaml`, `resume.yaml` — page copy and sections.
-- `projects.yaml`, `certificates.yaml`, `certifications.yaml`, `notfound.yaml` — lists and page copy. `projects.yaml` also holds the card labels (`labels.scope`, `labels.stack`).
-- `blog.yaml` — posts and article content.
+- `about.yaml`, `cv.yaml`, `resume.yaml` — page copy and sections. `cv.yaml` sections use `text` paragraphs or `entries` (`title`, optional `href`/`dates`/`meta`/`bullets`); the resume expects sections named `Profile`, `Experience`, `Selected project`, `Education`, and `Skills`.
+- `projects.yaml`, `certificates.yaml`, `certifications.yaml`, `notfound.yaml` — lists and page copy. `projects.yaml` also holds the card labels (`labels.scope`, `labels.stack`); `certificates.yaml` groups credentials by `provider` with a `count`-style `note`.
+- `blog.yaml` — posts and article content (`p`, `h2`, `ul`, `blockquote` blocks).
 
-`src/data/config.ts` parses the YAML and `src/data/site.ts` re-exports it, so pages and the search index keep importing from one place.
+`src/data/config.ts` parses the YAML and `src/data/site.ts` re-exports it, so pages and the search index keep importing from one place. `site.ts` also flattens the certificate groups for the search index.
 
 - Search index and keywords: `src/data/search.ts`.
 - Shared layout, theme toggle, and print behavior: `src/layouts/Layout.astro`.
@@ -69,4 +71,9 @@ The "Download full CV" and "Download resume" buttons open the browser print dial
 
 ## Deployment
 
-The site is configured for GitHub Pages in `astro.config.mjs` with the `https://danhtran8989.github.io` site URL and a `/` base path.
+The site is configured for GitHub Pages in `astro.config.mjs` with the `https://danhtran2mind.github.io` site URL and a `/` base path, and deployed by `.github/workflows/deploy.yml` (GitHub Actions → Pages) on every push to `main`.
+
+Two things must stay in sync:
+
+- `site` in `astro.config.mjs` and `domain` in `src/config/site.yaml` — together they drive canonical URLs and the breadcrumb labels (`danhtran2mind.github.io/cv`).
+- The domain and the repository name. `base: '/'` and user-site URLs only work when the repository is named exactly `danhtran2mind.github.io`. If this repo keeps deploying under its current name (`danhtran8989.github.io`), either rename the repository, or set `base: '/<repo-name>'` and change both `site` and `domain` to match.

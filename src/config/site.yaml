@@ -1,34 +1,47 @@
-name: Danh Tran
-domain: danhtran8989.github.io
-email: dtmbatc@gmail.com
+name: Tran Pham Cong Danh
+alias: DanhTran2Mind
+domain: danhtran2mind.github.io
+email: danhtran2mind@gmail.com
 
 nav:
   - label: About
     href: /
   - label: Blog
     href: /blog
-  - label: CV
-    href: /cv
-  - label: Resume
-    href: /resume
+  - label: CV & Resume
+    children:
+      - label: CV
+        href: /cv
+      - label: Resume
+        href: /resume
   - label: Projects
     href: /projects
-  - label: Certificates
-    href: /certificates
-  - label: Certifications
-    href: /certifications
+  - label: Certs
+    children:
+      - label: Certificates
+        href: /certificates
+      - label: Certifications
+        href: /certifications
 
 socials:
   - label: GitHub
-    href: https://github.com/danhtran8989
+    href: https://github.com/danhtran2mind
+  - label: Hugging Face
+    href: https://huggingface.co/danhtran2mind
+  - label: GitLab
+    href: https://gitlab.com/danhtran2mind
   - label: LinkedIn
-    href: https://www.linkedin.com/in/danhtran8989/
+    href: https://www.linkedin.com/in/danhtran2mind
+  - label: X
+    href: https://x.com/danhtran2mind
+  - label: Facebook
+    href: https://facebook.com/danhtran2mind
   - label: Email
-    href: mailto:dtmbatc@gmail.com
-    text: dtmbatc@gmail.com
+    href: mailto:danhtran2mind@gmail.com
+    text: danhtran2mind@gmail.com
 
 footer:
   eyebrow: Get in touch
-  note: A work in progress, just like me.
+  note: An AI engineer working where medicine, machine learning, and Vietnamese language meet.
   linksLabel: Elsewhere
   contactLabel: Contact

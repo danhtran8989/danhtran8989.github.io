@@ -5,11 +5,17 @@ import {
 	certificatesConfig,
 } from './config';
 
+export type NavItem = {
+	label: string;
+	href?: string;
+	children?: { label: string; href: string }[];
+};
+
 export const site = siteConfig as {
 	name: string;
 	domain: string;
 	email: string;
-	nav: { label: string; href: string }[];
+	nav: NavItem[];
 	socials: { label: string; href: string; text?: string }[];
 	footer: {
 		eyebrow: string;
@@ -34,13 +40,22 @@ export const projects = projectsConfig.projects as {
 	href: string;
 }[];
 
-export const certificates = certificatesConfig.certificates as {
-	index: string;
-	type: string;
+export interface Certificate {
 	title: string;
-	issuer: string;
+	date: string;
 	description: string;
+	href?: string;
+}
+
+export const certificateGroups = certificatesConfig.groups as {
+	provider: string;
+	note: string;
+	items: Certificate[];
 }[];
+
+export const certificates = certificateGroups.flatMap((group) =>
+	group.items.map((item) => ({ ...item, provider: group.provider })),
+);
 
 export const blogPosts = (blogConfig.posts as BlogPost[]).map((post) => ({
 	...post,

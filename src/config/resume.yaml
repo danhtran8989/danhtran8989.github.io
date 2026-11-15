@@ -1,27 +1,28 @@
 title: The short version.
-lede: A focused overview of my experience, skills, and selected work.
+lede: AI engineering with a medical background, on one page.
 
 card:
-  name: Danh Tran
-  meta: "Developer & lifelong learner · Vietnam · dtmbatc@gmail.com"
+  meta: "AI Engineer · Ho Chi Minh City, Vietnam · danhtran2mind@gmail.com"
   sections:
     - eyebrow: Profile
-      copy: "A brief professional summary focused on your strengths, experience, and the opportunities you're looking for."
+      copy: "AI engineer with a Doctor of Medicine and a Master of Engineering in Computer Science. I build retrieval, speech, and vision systems for Vietnamese healthcare — from hospital chatbots with page-level citations to models that run locally for privacy."
     - eyebrow: Experience
-      role: "Your role · Organization"
-      dates: Year — Present
+      role: "AI Engineer · OSAS Joint Stock Company"
+      dates: Dec 2025 — Present
       bullets:
-        - Highlight an achievement and the result it delivered.
-        - Show how you solved a problem or improved a process.
+        - Primary AI engineer for an intelligent chatbot covering RAG, ASR, TTS, and local LLM optimisation.
+        - Built a hospital assistant with multi-document retrieval and exact page citations.
+        - Added multi-level financial report chat with automated dashboard generation.
+        - R&D on multimodal triage for skin-condition images.
     - eyebrow: Selected project
-      project: Personal portfolio
-      copy: "A home for my work, writing, and everything I'm learning."
+      project: Vietnamese Health Chat LoRA
+      copy: "LoRA fine-tuning for accurate, context-aware Vietnamese medical answers, shipped with a Gradio demo and Python API."
     - eyebrow: Education
-      copy: Your degree or qualification
-      muted: "Institution · Graduation year"
+      copy: "M.Eng. Computer Science, HCMUT — VNUHCM · M.D. General Medicine, UHS — VNUHCM"
+      muted: "2022 — 2024 · GPA 8.08/10, thesis on home blood-pressure classification · 2014 — 2020"
     - eyebrow: Skills
-      copy: Your core skills
-      muted: Tools, technologies, and methods
+      copy: Python, PyTorch, TensorFlow, LangChain, Ollama, Gradio
+      muted: NLP · computer vision · speech · MLOps · SQL, Spark, Kafka
 
 side:
   intro:
@@ -29,8 +30,8 @@ side:
     title: A quick introduction.
     downloadLabel: Download resume
   note:
-    eyebrow: Editable resume template
-    text: Replace the sample details with your experience and attach your PDF for download.
+    eyebrow: The full record
+    text: Every role, degree, and skill group lives on the CV page — together with 61 certificates and 20 public projects.
   next:
     title: Want the full background?
     linkLabel: View curriculum vitae

@@ -20,15 +20,42 @@ function isActive(href: string) {
 		<div class="header-end">
 			<nav class="primary-nav" aria-label="Primary">
 				{
-					site.nav.map((item) => (
-						<a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-							{item.label}
-						</a>
-					))
+					site.nav.map((item) =>
+						item.children ? (
+							<div
+								class:list={[
+									'nav-dropdown',
+									{ 'is-active': item.children.some((child) => isActive(child.href)) },
+								]}
+								data-nav-dropdown
+							>
+								<button class="nav-dropdown__trigger" type="button" aria-expanded="false" aria-haspopup="true">
+									{item.label}
+									<Icon name="chevron" class="nav-dropdown__chevron" />
+								</button>
+								<div class="nav-dropdown__menu">
+									{item.children.map((child) => (
+										<a href={child.href} aria-current={isActive(child.href) ? 'page' : undefined}>
+											{child.label}
+										</a>
+									))}
+								</div>
+							</div>
+						) : (
+							<a href={item.href} aria-current={isActive(item.href ?? '/') ? 'page' : undefined}>
+								{item.label}
+							</a>
+						),
+					)
 				}
 			</nav>
 
 			<div class="header-actions">
+				<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+					<Icon name="sun" class="theme-icon icon-sun" />
+					<Icon name="moon" class="theme-icon icon-moon" />
+				</button>
+
 				<button
 					class="search-trigger"
 					type="button"
@@ -40,11 +67,6 @@ function isActive(href: string) {
 					<Icon name="search" class="search-trigger__icon" />
 					<span class="search-trigger__label">Search</span>
 					<kbd class="search-trigger__key" data-search-key>Ctrl K</kbd>
-				</button>
-
-				<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
-					<Icon name="sun" class="theme-icon icon-sun" />
-					<Icon name="moon" class="theme-icon icon-moon" />
 				</button>
 
 				<button
@@ -67,14 +89,40 @@ function isActive(href: string) {
 			<nav class="container" aria-label="Mobile">
 				<ul>
 					{
-						site.nav.map((item) => (
-							<li>
-								<a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
-									{item.label}
-									<Icon name="up-right" />
-								</a>
-							</li>
-						))
+						site.nav.map((item) =>
+							item.children ? (
+								<li
+									class="mobile-nav__group"
+									data-mobile-group
+									data-open={item.children.some((child) => isActive(child.href)) ? 'true' : 'false'}
+								>
+									<button
+										class="mobile-nav__group-btn"
+										type="button"
+										aria-expanded={item.children.some((child) => isActive(child.href)) ? 'true' : 'false'}
+									>
+										{item.label}
+										<Icon name="chevron" class="mobile-nav__group-chev" />
+									</button>
+									<div class="mobile-nav__list">
+										<div class="mobile-nav__list-inner">
+											{item.children.map((child) => (
+												<a href={child.href} aria-current={isActive(child.href) ? 'page' : undefined}>
+													{child.label}
+												</a>
+											))}
+										</div>
+									</div>
+								</li>
+							) : (
+								<li>
+									<a href={item.href} aria-current={isActive(item.href ?? '/') ? 'page' : undefined}>
+										{item.label}
+										<Icon name="up-right" />
+									</a>
+								</li>
+							),
+						)
 					}
 				</ul>
 			</nav>
@@ -110,6 +158,69 @@ function isActive(href: string) {
 				setOpen(false);
 				menuToggle.focus();
 			}
+		});
+	}
+
+	// Desktop nav dropdowns: "CV & Resume", "Certs"
+	const dropdowns = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-dropdown]'));
+
+	const closeDropdowns = (except?: HTMLElement) => {
+		for (const dropdown of dropdowns) {
+			if (dropdown === except) continue;
+			dropdown.classList.remove('is-open');
+			dropdown
+				.querySelector<HTMLButtonElement>('.nav-dropdown__trigger')
+				?.setAttribute('aria-expanded', 'false');
+		}
+	};
+
+	for (const dropdown of dropdowns) {
+		const trigger = dropdown.querySelector<HTMLButtonElement>('.nav-dropdown__trigger');
+		trigger?.addEventListener('click', () => {
+			const willOpen = !dropdown.classList.contains('is-open');
+			closeDropdowns(dropdown);
+			dropdown.classList.toggle('is-open', willOpen);
+			trigger.setAttribute('aria-expanded', String(willOpen));
+		});
+
+		// Hover opens on pointer devices; CSS keeps it visible while the pointer is inside.
+		dropdown.addEventListener('mouseenter', () => {
+			if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+			closeDropdowns(dropdown);
+			dropdown.classList.add('is-open');
+			trigger?.setAttribute('aria-expanded', 'true');
+		});
+
+		dropdown.addEventListener('mouseleave', () => {
+			if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+			dropdown.classList.remove('is-open');
+			trigger?.setAttribute('aria-expanded', 'false');
+		});
+
+		dropdown.addEventListener('focusout', (event) => {
+			const next = event.relatedTarget as Node | null;
+			if (!next || !dropdown.contains(next)) {
+				dropdown.classList.remove('is-open');
+				trigger?.setAttribute('aria-expanded', 'false');
+			}
+		});
+	}
+
+	document.addEventListener('click', (event) => {
+		if (!(event.target as HTMLElement).closest('[data-nav-dropdown]')) closeDropdowns();
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') closeDropdowns();
+	});
+
+	// Mobile accordion groups
+	for (const group of Array.from(document.querySelectorAll<HTMLElement>('[data-mobile-group]'))) {
+		const button = group.querySelector<HTMLButtonElement>('.mobile-nav__group-btn');
+		button?.addEventListener('click', () => {
+			const open = group.dataset.open !== 'true';
+			group.dataset.open = String(open);
+			button.setAttribute('aria-expanded', String(open));
 		});
 	}
 </script>

@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-	title = `${site.name} — Developer & lifelong learner`,
-	description = 'The personal site of Dan Tran: projects, notes, CV, resume, certificates, and certifications.',
+	title = `${site.name} — AI engineer`,
+	description = `The personal site of ${site.name}: AI projects, notes, CV, resume, certificates, and certifications.`,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? `https://${site.domain}`);

@@ -1,27 +1,46 @@
-title: Knowledge, validated.
-lede: Professional credentials earned through assessment and examination.
+title: Knowledge, assessed.
+lede: The badges and tracks I hold that ended with a graded assessment rather than a completion tick.
 
 section:
-  eyebrow: Professional credentials
-  note: Credential placeholders — add your own details.
+  eyebrow: Assessed credentials
+  note: "No vendor exam certification yet — these are assessed badges and career tracks."
 
 credentials:
-  - eyebrow: Exam-based credential
-    title: Your certification name
-    provider: "Certification provider · Credential level"
-    issued: Month / Year
-    valid: Month / Year or no expiry
+  - eyebrow: Skill badge · assessed
+    title: Python Essentials 2
+    provider: Cisco Networking Academy · PCAP preparation
+    issued: Sep 2024
+    valid: No expiry
+    href: https://www.credly.com/badges/d589eb5b-d2f5-4c77-9c2e-67c9921896e1
     panel: true
-  - eyebrow: Exam-based credential
-    title: Your next certification
-    provider: "Certification provider · Credential level"
-    issued: Month / Year
-    valid: Month / Year or no expiry
+
+  - eyebrow: Skill badge · assessed
+    title: Python Essentials 1
+    provider: Cisco Networking Academy · PCEP preparation
+    issued: Sep 2024
+    valid: No expiry
+    href: https://www.credly.com/badges/1c9274cf-d6b4-4f57-9647-60eeb5525415
     panel: false
 
+  - eyebrow: Career track · assessed
+    title: Associate AI Engineer for Developers
+    provider: DataCamp · associate track
+    issued: Nov 2024
+    valid: No expiry
+    href: https://www.datacamp.com/statement-of-accomplishment/track/9be5c32bd0d1bc752cf39f631c4f35bd824e1f79?raw=1
+    panel: false
+
+  - eyebrow: Career track · assessed
+    title: Machine Learning Engineer
+    provider: DataCamp · professional track
+    issued: Nov 2024
+    valid: No expiry
+    href: https://www.datacamp.com/statement-of-accomplishment/track/06025a9336a74b77eb8d47725c2df0f2b60dd097?raw=1
+    panel: true
+
 moreBand:
-  title: More than course completion.
+  title: Where the practice lives.
   lines:
-    - Professional certifications validate knowledge through formal assessment.
+    - Assessed badges prove recall; shipped projects prove judgement. I keep the second list longer.
   linkPrefix: "For courses and training programs,"
   linkLabel: explore certificates

@@ -1,27 +1,27 @@
 hero:
-  eyebrow: Portfolio · 2026
-  title: I build thoughtful
-  titleAccent: digital things.
-  lede: "I'm Danh Tran — a developer and lifelong learner turning ideas into clear, useful experiences."
+  eyebrow: AI engineer · Ho Chi Minh City
+  title: I build AI that
+  titleAccent: understands people.
+  lede: "I'm Tran Pham Cong Danh — a medical doctor turned AI engineer, building Vietnamese language, speech, and vision systems that people can actually use."
   primaryLabel: Explore my work
   secondaryLabel: More about me
 
 about:
   eyebrow: About me
-  title: Curious by default, careful by habit.
-  body: "I like the part where an idea becomes something you can actually use. This site is where I keep the work, the notes, and the things I'm still figuring out."
+  title: Medicine taught me care. AI taught me scale.
+  body: "An M.D. and a master's in computer science, and most of my days go into retrieval, speech, and vision models for Vietnamese healthcare. This site keeps the work, the notes, and the things I'm still learning."
   linkLabel: More about me
-  portraitNote: "Developer & lifelong learner · Vietnam"
+  portraitNote: "AI engineer · HCMC, Vietnam"
   portraitInitials: DT
 
 work:
   eyebrow: Selected work
-  title: My projects highlight
+  title: Systems I've built and shipped
   linkLabel: Explore all projects
 
 notes:
   eyebrow: Writing
-  title: Notes along the way
+  title: Notes from the build
   linkLabel: Read the blog
 
 principles:

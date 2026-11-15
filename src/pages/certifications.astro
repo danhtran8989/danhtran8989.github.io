@@ -41,7 +41,9 @@ const { title, lede, section, credentials, moreBand } = certificationsConfig;
 							<div class="cred-foot">
 								<a
 									class:list={['cred-link', { 'cred-link--panel': credential.panel }]}
-									href="#"
+									href={credential.href}
+									target="_blank"
+									rel="noopener noreferrer"
 								>
 									Verify credential <Icon name="up-right" />
 								</a>

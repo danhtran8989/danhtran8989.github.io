@@ -1,110 +1,175 @@
-title: Notes along the way.
-lede: Ideas, experiments, and lessons worth sharing.
-featuredLabel: Sample article
-latestLabel: Latest notes
-latestNote: "Sample writing — replace with your own posts."
+title: Notes from the build.
+lede: Tutorials I wrote for myself first — Python, tooling, and the small things that keep a workflow sane.
+
+featuredLabel: Latest note
+latestLabel: All notes
+latestNote: "Six posts so far, mostly notes-to-self that turned into write-ups."
 
 posts:
-  - slug: building-a-personal-corner-of-the-web
-    category: Development
-    title: Building a personal corner of the web.
-    read: 5 min read
-    date: May 2026
-    excerpt: "A small site can be a quiet, durable home for your work. Here is the thinking behind mine."
-    content:
-      - type: p
-        text: "For a long time my work lived in a dozen different places: a folder of screenshots, a few forgotten drafts, and links I kept sending to myself. A personal site gave all of it a home."
-      - type: h2
-        text: Start with a small, honest brief
-      - type: p
-        text: "The brief for this site was deliberately unambitious. It needed to load quickly, read well on a phone, and be easy to update from a text file. Anything that did not help with those three things was left for later."
-      - type: ul
-        items:
-          - Write for the person you were two years ago.
-          - Choose a small set of type sizes and stick to them.
-          - Make the first screen useful without any scrolling.
-      - type: h2
-        text: Design for the long version of you
-      - type: p
-        text: "Trends move faster than personal sites. I wanted something quiet enough to still feel right after a year, with a palette that could shift without rebuilding the whole thing. Tokens make that possible: change a handful of colors, and the entire site follows."
-      - type: blockquote
-        text: "A personal site is less of a launch and more of a place to keep coming back to."
-      - type: p
-        text: "The result is intentionally plain. No feed, no algorithm, no notifications. Just a few pages that I can point to when someone asks what I have been working on."
-
-  - slug: learning-in-public
-    category: Learning
-    title: Learning in public, one small step at a time
+  - slug: boost-your-online-skills
+    category: Tooling
+    title: Encrypted snippets and other online skills
     read: 4 min read
-    date: April 2026
-    excerpt: "Sharing the messy middle of learning is more useful than waiting for perfect answers."
+    date: May 2025
+    excerpt: "A small habit that keeps reusable browser and terminal scripts out of plain sight — and the Kaggle idle-timeout workaround that started it."
     content:
       - type: p
-        text: "Most learning happens in the messy middle: the part where you understand enough to be curious, but not enough to sound impressive. That is also the part most people hide."
+        text: "Some scripts are useful enough that you want them in every browser session, and awkward enough that you do not want them copied around in plain text. Encrypting the payload and decrypting it when needed is a low-effort middle ground."
       - type: h2
-        text: The messy middle is the useful part
+        text: Why bother encrypting a snippet
       - type: p
-        text: "When I only publish finished work, I lose the notes that helped me get there. Sharing a short entry while the problem is still fresh turns a private struggle into something another person can recognize."
+        text: "Public gists are searchable forever. If a helper script touches a session, an account, or a dataset you care about, publishing it verbatim is a bad default. Encrypting it means the note survives while the working code stays quiet."
+      - type: h2
+        text: The Kaggle case
+      - type: p
+        text: "Kaggle disconnects idle notebooks, which is painful during long reads. A short script pasted into the browser console keeps the session warm. I keep it encrypted in the post, decrypt it when I need it, and avoid leaving a ready-to-paste script in a public index."
+      - type: h2
+        text: The workflow
       - type: ul
         items:
-          - Write one paragraph while the problem is still annoying.
-          - Name the thing you got wrong, not just the thing you fixed.
-          - Link the source that finally made it click.
-      - type: h2
-        text: A small habit, repeated
+          - Encrypt the snippet once and keep only the ciphertext in the note.
+          - Paste the ciphertext into a small decryption step that runs locally.
+          - Re-encrypt whenever the script changes, so the published text stays stale by design.
       - type: p
-        text: "I keep a plain text file for each project. At the end of a session I add three lines: what I tried, what happened, and what I will try next. Over a month, those lines become a record of progress that is far more honest than a highlight reel."
-      - type: p
-        text: "The goal is not to teach from a stage. It is to leave a trail that is easy to follow, both for other people and for my future self."
+        text: "It is not real security — the key still lives with you. It is a speed bump that stops accidental copying, which is most of what a personal site needs."
 
-  - slug: from-idea-to-finished-project
-    category: Process
-    title: From a rough idea to a finished project
-    read: 6 min read
-    date: March 2026
-    excerpt: "A practical loop for turning a vague idea into something small enough to finish."
-    content:
-      - type: p
-        text: "A vague idea feels exciting because everything is still possible. The trouble is that everything being possible is also why it never gets finished."
-      - type: h2
-        text: Make the idea smaller
-      - type: p
-        text: "Before writing any code, I write a single sentence describing what the project does for one person. If the sentence needs a comma to explain itself, the idea is still too large."
-      - type: ul
-        items:
-          - Pick one user and one problem.
-          - Define the smallest version that is still useful.
-          - Set a deadline short enough to stay focused.
-      - type: p
-        text: "Then I build the least interesting part first. For a website that means the layout and copy; for a tool it means the data and the edge cases. The fun parts are easier to finish once the foundation is boring and stable."
-      - type: h2
-        text: Finish, then improve
-      - type: p
-        text: "Shipping is a skill you practice, not a reward you earn. A finished version gives you something concrete to react to, and real feedback beats another week of imagining."
-      - type: p
-        text: "After the first release I keep a short list of improvements, but I do not start them until I have used the thing myself for a week. Half the list usually disappears."
-
-  - slug: small-details-that-make-a-website-feel-better
-    category: Development
-    title: Small details that make a website feel better
+  - slug: directory-tree-printer
+    category: Python
+    title: Printing a directory tree without a dependency
     read: 5 min read
-    date: February 2026
-    excerpt: "Typography, spacing, and motion do more for a page than most people notice."
+    date: May 2025
+    excerpt: "A short recursive function that lists folders before files, hides dotfiles, and draws clean connectors — plus the seedir version when you want emoji."
     content:
       - type: p
-        text: "People rarely compliment a website for its line height. They just notice that reading it feels easy. Most of the quality of an interface lives in details that are hard to name."
+        text: "I keep needing a quick view of a project's shape: which folders exist, what sits inside them, and what is noise. A readable directory tree is faster than clicking through a file browser."
       - type: h2
-        text: Typography carries the page
+        text: The core idea
       - type: p
-        text: "A small number of sizes, used consistently, will do more than a dozen carefully chosen fonts. I try to keep headings closer in size than feels comfortable at first, then let weight and spacing do the separating."
+        text: "List the entries, split directories from files, drop anything starting with a dot, sort both groups, then recurse into each directory while carrying an indentation prefix. The last entry in a list gets a corner connector instead of a tee so the drawing closes cleanly."
       - type: ul
         items:
-          - Set body text between 60 and 75 characters per line.
-          - Use tighter tracking on large headings and looser tracking on small labels.
-          - Give links a visible hover state that does not move the layout.
+          - Directories first, then files — that ordering is what makes the output readable.
+          - Skip hidden entries by default; they are rarely what you are looking for.
+          - Recurse with a prefix that matches the connector you just printed.
       - type: h2
-        text: Space is a feature
+        text: When you want it prettier
       - type: p
-        text: "Whitespace is not empty space. It is the pause that tells a reader where one idea ends and the next begins. When a layout feels crowded, removing an element is usually better than shrinking the gaps."
+        text: "The seedir package does the same job with emoji icons, item limits, and a beyond marker for long folders. I install it when the output is going into a README rather than a terminal."
+      - type: blockquote
+        text: "A directory tree is documentation you generate instead of maintain."
+
+  - slug: github-setup-and-encryption-guide
+    category: Tooling
+    title: GitHub setup and file encryption on Linux
+    read: 6 min read
+    date: Apr 2025
+    excerpt: "The setup I repeat on every fresh machine: git identity, credentials, and git-crypt for the files that should never land in plain text."
+    content:
       - type: p
-        text: "The same is true of motion. A 150ms transition on a link is enough to feel responsive; anything longer starts to feel like the page is thinking about it."
+        text: "Setting up Git on a new Linux box is a five-minute job with a long tail of small decisions. Here is the version I actually reuse, including the part most guides skip: encrypting a subset of files before they reach a remote."
+      - type: h2
+        text: Install and identify yourself
+      - type: p
+        text: "Start with git, git-lfs, git-crypt, and gnupg. Then set the user name and email so commits are attributed correctly, and pick your default branch name once instead of fixing it later."
+      - type: ul
+        items:
+          - Set name, email, and the initial branch in the global config.
+          - Generate a GPG key if you want signed commits, and register it on GitHub.
+          - Authenticate with SSH keys or the GitHub CLI rather than a password.
+      - type: h2
+        text: Encrypt what should stay local
+      - type: p
+        text: "git-crypt lets you keep a file in the repository while storing it encrypted. You add the paths to a filter definition, initialise the repository once, and hand the symmetric key to whoever needs to read them. Without the key, the file is committed as ciphertext."
+      - type: p
+        text: "The important detail: adding a file after encryption is enabled works, but rewriting history to encrypt an old file does not. Decide early, or rotate the key and accept the cleanup."
+      - type: h2
+        text: A checklist before the first push
+      - type: ul
+        items:
+          - Verify the remote URL and the default branch.
+          - Confirm the ignore rules catch environments, data dumps, and credentials.
+          - Check that encrypted paths are covered by the filter, not just the ignore file.
+
+  - slug: steps-to-creating-a-readme
+    category: Documentation
+    title: Steps to creating a README people can follow
+    read: 5 min read
+    date: October 2024
+    excerpt: "A section-by-section template for project READMEs: what it does, how to run it, what it needs, and how to contribute."
+    content:
+      - type: p
+        text: "A README is the cheapest piece of documentation you will ever write, and the one most likely to be read. I keep a template from the Cisco Data Analytics Essentials course and adapt it for every repository."
+      - type: h2
+        text: Start with the sentence
+      - type: p
+        text: "The first line answers two questions: what is this, and who is it for. If you cannot fit that into one sentence, the project probably needs scoping before it needs a README."
+      - type: h2
+        text: Then the sections, in order
+      - type: ul
+        items:
+          - "Project title and one-line description — what it does, not what it is built with."
+          - "Table of contents — needed once the README passes a screen and a half."
+          - "Installation — exact commands, including the versions that matter."
+          - "Usage — the shortest path to a visible result."
+          - "Configuration — environment variables and defaults in a table."
+          - "Contributing and licence — how to help, and what others may do with it."
+      - type: h2
+        text: Keep it honest
+      - type: p
+        text: "Badges that claim more than the code delivers are worse than no badges. A status line saying 'work in progress, training not reproducible' saves everyone time."
+      - type: blockquote
+        text: "If a step in the README has never been run on a clean machine, it is a wish, not an instruction."
+
+  - slug: iris-flower-classifier
+    category: Machine Learning
+    title: An Iris classifier with sliders
+    read: 4 min read
+    date: October 2024
+    excerpt: "A Streamlit front end over a scikit-learn model: four measurements in, a species out. Small enough to explain in one sitting."
+    content:
+      - type: p
+        text: "The Iris dataset is the hello-world of classification, but a notebook does not show what a model feels like to use. Wrapping it in Streamlit takes an afternoon and turns four numbers into an interface."
+      - type: h2
+        text: What the app does
+      - type: p
+        text: "Sliders set sepal length, sepal width, petal length, and petal width. The trained model returns one of three species, and the result panel repeats the measurements next to the prediction so the input is always visible."
+      - type: h2
+        text: The stack
+      - type: ul
+        items:
+          - scikit-learn for the model and the train/test split.
+          - pandas for loading and shaping the dataset.
+          - Streamlit for the layout, sliders, and the predict button.
+      - type: h2
+        text: Running it
+      - type: p
+        text: "Activate a virtual environment, install the requirements, then start the app with streamlit run. Everything happens locally, which is the point — the same pattern works for a real model with a real form in front of it."
+      - type: p
+        text: "The lesson that carried over to bigger projects: a UI makes bad inputs obvious. Half the improvements I made came from watching someone move a slider to a value the training data never contained."
+
+  - slug: hello-world-in-python
+    category: Programming
+    title: Hello World in Python, properly explained
+    read: 3 min read
+    date: September 2024
+    excerpt: "One line of code, one built-in function, and three concepts worth understanding before moving on."
+    content:
+      - type: p
+        text: "Every Python journey starts with the same line: print Hello World. It looks trivial, and it is, but it touches three ideas you will use forever."
+      - type: h2
+        text: The code
+      - type: p
+        text: "Call print with a string literal in parentheses. print is a built-in function — a reusable block that already exists — and the quoted text is a string, which is how Python knows it is data rather than a name in the code."
+      - type: h2
+        text: Running it
+      - type: ul
+        items:
+          - Save the line in a file ending in .py.
+          - Open a terminal in that folder.
+          - Run python hello.py and read the output.
+      - type: h2
+        text: What it actually teaches
+      - type: p
+        text: "Syntax is the set of rules the interpreter enforces. Functions are named blocks you can call. Strings are values, not instructions. That is the whole foundation, and the rest of the language is detail on top of it."
+      - type: blockquote
+        text: "The first program is not about printing text; it is about proving the loop from file to output works."

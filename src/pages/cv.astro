@@ -22,19 +22,21 @@ const { title, lede, panel, main } = cvConfig;
 						<p class="eyebrow eyebrow--panel">Contact</p>
 						<ul class="cv-list">
 							{
-								panel.contact.map((item) => (
-									<li>
-										{item.includes('@') ? (
-											<a href={`mailto:${item}`}>{item}</a>
-										) : item.includes('.') ? (
-											<a href={`https://${item}`} target="_blank" rel="noopener noreferrer">
-												{item}
+								panel.contact.map((item) =>
+									item.href ? (
+										<li>
+											<a
+												href={item.href}
+												target={item.href.startsWith('mailto:') ? undefined : '_blank'}
+												rel={item.href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+											>
+												{item.text}
 											</a>
-										) : (
-											item
-										)}
-									</li>
-								))
+										</li>
+									) : (
+										<li>{item.text}</li>
+									),
+								)
 							}
 						</ul>
 					</div>
@@ -70,15 +72,29 @@ const { title, lede, panel, main } = cvConfig;
 								{section.dates && <p class="cv-dates">{section.dates}</p>}
 							</div>
 							<div class="cv-content">
-								{section.content.map((block) =>
-									typeof block === 'string' ? (
-										<p>{block}</p>
-									) : block.title ? (
-										<h3>{block.title}</h3>
-									) : block.subtitle ? (
-										<p class="cv-subtle">{block.subtitle}</p>
-									) : null,
-								)}
+								{(section.text ?? []).map((paragraph) => <p>{paragraph}</p>)}
+								{(section.entries ?? []).map((entry) => (
+									<article class="cv-entry">
+										<div class="cv-entry__head">
+											<h3>
+												{entry.href ? (
+													<a href={entry.href} target="_blank" rel="noopener noreferrer">
+														{entry.title}
+													</a>
+												) : (
+													entry.title
+												)}
+											</h3>
+											{entry.dates && <span class="cv-entry__dates">{entry.dates}</span>}
+										</div>
+										{entry.meta && <p class="cv-subtle">{entry.meta}</p>}
+										{entry.bullets && entry.bullets.length > 0 && (
+											<ul class="cv-bullets">
+												{entry.bullets.map((bullet) => <li>{bullet}</li>)}
+											</ul>
+										)}
+									</article>
+								))}
 								{section.next && (
 									<p class="cv-next">
 										<span>{section.next.label}</span>
@@ -218,6 +234,47 @@ const { title, lede, panel, main } = cvConfig;
 		font-size: 15px;
 		color: var(--muted);
 		opacity: 0.85;
+	}
+
+	.cv-entry + .cv-entry {
+		margin-top: 30px;
+		padding-top: 30px;
+		border-top: 1px dashed var(--line);
+	}
+
+	.cv-entry__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 16px;
+		flex-wrap: wrap;
+	}
+
+	.cv-entry__head h3 a {
+		transition: color 160ms ease;
+	}
+
+	.cv-entry__head h3 a:hover {
+		color: var(--accent);
+	}
+
+	.cv-entry__dates {
+		font-size: 12.5px;
+		font-weight: 500;
+		letter-spacing: 0.06em;
+		color: var(--muted);
+		white-space: nowrap;
+	}
+
+	.cv-bullets {
+		display: grid;
+		gap: 6px;
+		margin-top: 12px;
+		padding-left: 1.1em;
+		list-style: disc;
+		font-size: 15.5px;
+		line-height: 1.55;
+		color: var(--muted);
 	}
 
 	.cv-next {

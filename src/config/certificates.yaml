@@ -1,26 +1,278 @@
-title: Learning, documented.
-lede: Course completions, programs, and learning milestones.
-sectionEyebrow: "Course & program completions"
-sectionNote: "Credential placeholders — add your own details."
-
-certificates:
-  - index: "01"
-    type: Course certificate
-    title: Your course or program
-    issuer: "Issuing organization · Year"
-    description: "Describe what you studied and the key skills you developed across the program."
-  - index: "02"
-    type: Specialization certificate
-    title: Your specialization
-    issuer: "Issuing organization · Year"
-    description: "Add a focused learning program or a sequence of related courses and projects."
-  - index: "03"
-    type: Workshop certificate
-    title: Your workshop or training
-    issuer: "Issuing organization · Year"
-    description: "Include practical training, workshops, or professional development you completed."
-
+title: Sixty-one certificates. One habit.
+lede: Every course, track, and badge I finished — grouped by where it came from, newest first.
+sectionEyebrow: Course & program completions
+sectionNote: 61 credentials · 9 providers · every one verifiable where the issuer allows
 learningBand:
   title: A record of continued learning.
-  question: Looking for exam-based professional credentials?
+  question: Looking for the assessed ones instead?
   linkLabel: Explore certifications
+groups:
+  - provider: DataCamp
+    note: 22 credentials · 2024-2025
+    items:
+      - title: Python Programming Fundamentals
+        date: Sep 15, 2025
+        description: Python fundamentals to create a registration app.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/68a44c9ffec2dd287e2e12c0e1a17550280eb571?raw=1
+      - title: Python Programming Toolbox
+        date: Sep 15, 2025
+        description: Python dates, regex, and algorithms basics.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/0893a8f7d5b5ec8402ef8787dd8aae6f3cb68fe3?raw=1
+      - title: Git Fundamentals
+        date: Sep 15, 2025
+        description: Master Git basics to advanced workflows.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/c669f4ef3f466b5a578493b11a9e4ae5393bd1ca?raw=1
+      - title: Building APIs in Python
+        date: Sep 15, 2025
+        description: Build fast, async Python APIs with FastAPI.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/8746c526e80689df81cfe2f20f9c9e731596f7ab?raw=1
+      - title: Python Developer
+        date: Sep 14, 2025
+        description: "Professional Python development: testing, Git, scraping, OOP."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/aeb14daa0ffcaf568d9c83a187d83fbe9c2d6314?raw=1
+      - title: Associate Python Developer
+        date: Sep 13, 2025
+        description: Learn Python, build projects, start dev career.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/4ec91fb990b6a0a23e5e36a77211ab76f983c631?raw=1
+      - title: Machine Learning Scientist in Python
+        date: Sep 11, 2025
+        description: Python machine learning track for job-ready scientists.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/d045dc25b5435e35d450bed77603af273beb7882?raw=1
+      - title: Python Programming
+        date: Sep 10, 2025
+        description: "Advanced Python: testing, OOP, best practices."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/e62fdaae835f1c6ceca5221686eddcc89d0443fc?raw=1
+      - title: Developing Applications with LangChain
+        date: Sep 10, 2025
+        description: "LLM apps with LangChain: chatbots, RAG, agents."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/e62fdaae835f1c6ceca5221686eddcc89d0443fc?raw=1
+      - title: Reinforcement Learning in Python
+        date: Aug 29, 2025
+        description: Master RL basics to advanced human-feedback models.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/700f81ea70aa729582132592ace66c82914cfc26?raw=1
+      - title: Llama Fundamentals
+        date: Aug 29, 2025
+        description: Implement Llama 3 for inference and fine-tuning.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/3b38d13f1c8bb52ca82eaae4433451c483a1116e?raw=1
+      - title: Big Data with PySpark
+        date: Dec 04, 2024
+        description: "Python NLP: transcribe audio, analyze sentiment."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/76b5579dea577af5bc04c7065d04a8fa8df719f2?raw=1
+      - title: Deep Learning in Python
+        date: Nov 29, 2024
+        description: Learn deep learning, build models with PyTorch.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/20ce71782442f1aa537d98c7ef37739124d64cb1?raw=1
+      - title: Developing Large Language Models
+        date: Nov 29, 2024
+        description: Build LLMs with PyTorch and transformers.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/7535c53246f1013fe3c625462939a18fcb342e65?raw=1
+      - title: Natural Language Processing in Python
+        date: Nov 29, 2024
+        description: "Python NLP: audio transcription and sentiment analysis."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/cbbebe7949a9faa86b32e2789f7354133fe52fd9?raw=1
+      - title: Machine Learning Fundamentals in Python
+        date: Nov 28, 2024
+        description: Learn machine learning with Python comprehensively.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/83554b9fdffc9aef27dd906aafba730673c4ee20?raw=1
+      - title: Keras Fundamentals
+        date: Nov 25, 2024
+        description: Master Keras, neural networks, deep learning.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/d1152665979387f0abffc6b138f9df14f2ed7000?raw=1
+      - title: Machine Learning Engineer
+        date: Nov 24, 2024
+        description: Master MLOps, deploy models, gain expertise.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/06025a9336a74b77eb8d47725c2df0f2b60dd097?raw=1
+      - title: Machine Learning in Production in Python
+        date: Nov 24, 2024
+        description: Deploy, monitor Python ML models with MLOps.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/3dbb239ab99db948c01f2f3972fb2d2b783a5bc4?raw=1
+      - title: Associate AI Engineer for Data Scientists
+        date: Nov 22, 2024
+        description: "AI Engineer: Build, deploy AI solutions."
+        href: https://www.datacamp.com/statement-of-accomplishment/track/bfd759655c5217bb1c6ef410e8952f3460894b0e?raw=1
+      - title: OpenAI Fundamentals
+        date: Nov 22, 2024
+        description: Build AI apps with OpenAI API.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/55a6617dab4407e4807d6c5438fa6ef28378a726?raw=1
+      - title: Associate AI Engineer for Developers
+        date: Nov 19, 2024
+        description: Master AI engineering, build impactful applications.
+        href: https://www.datacamp.com/statement-of-accomplishment/track/9be5c32bd0d1bc752cf39f631c4f35bd824e1f79?raw=1
+  - provider: Kaggle
+    note: 12 credentials · 2024
+    items:
+      - title: Feature Engineering
+        date: Oct 04, 2024
+        description: Enhance models with better data features.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/feature-engineering
+      - title: Time Series
+        date: Oct 04, 2024
+        description: ML for practical forecasting.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/time-series
+      - title: Machine Learning Explainability
+        date: Oct 04, 2024
+        description: Produce understandable model insights.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/machine-learning-explainability
+      - title: Intro to Machine Learning
+        date: Sep 29, 2024
+        description: Data, models, training, evaluation, regularization.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/intro-to-machine-learning
+      - title: Pandas
+        date: Sep 29, 2024
+        description: Do quick data-manipulation drills.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/pandas
+      - title: Intermediate Machine Learning
+        date: Sep 29, 2024
+        description: "Preprocess: missing, non-numeric, leakage mitigation."
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/intermediate-machine-learning
+      - title: Intro to Deep Learning
+        date: Sep 29, 2024
+        description: TensorFlow/Keras structured-data neural networks.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/intro-to-deep-learning
+      - title: Computer Vision
+        date: Sep 29, 2024
+        description: Stack conv-pool-dense layers; compile, train, evaluate.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/computer-vision
+      - title: Data Cleaning
+        date: Sep 29, 2024
+        description: Clean messy data efficiently.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/data-cleaning
+      - title: Intro to Programming
+        date: Sep 28, 2024
+        description: Python basics for absolute beginners.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/intro-to-programming
+      - title: Python
+        date: Sep 28, 2024
+        description: "Python: key language for data science."
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/python
+      - title: Intro to AI Ethics
+        date: Sep 28, 2024
+        description: Frameworks, assessments, documentation, workshops, audits.
+        href: https://www.kaggle.com/learn/certification/danhtran8mind/intro-to-ai-ethics
+  - provider: Microsoft Learn
+    note: 8 credentials · 2024
+    items:
+      - title: Create machine learning models
+        date: Sep 20, 2024
+        description: Interactive ML basics to deep-learning prep.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/9XHVWYEU
+      - title: Develop your own custom copilots with Azure AI Studio
+        date: Sep 20, 2024
+        description: Build Azure generative AI apps.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/DCSNSEFJ
+      - title: "Microsoft Azure AI Fundamentals: Document Intelligence and Knowledge Mining"
+        date: Sep 20, 2024
+        description: AI basics, Azure AI; Azure portal needed.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/DCSWPP2J
+      - title: Copilot Foundations
+        date: Sep 20, 2024
+        description: AI copilots on Azure.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/VDEGACJM
+      - title: "Microsoft Azure AI Fundamentals: Natural Language Processing"
+        date: Sep 20, 2024
+        description: Azure AI basics.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/HANQ6568
+      - title: "Microsoft Azure AI Fundamentals: Generative AI"
+        date: Sep 20, 2024
+        description: AI basics with Azure services.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/QT4CACVE
+      - title: "Microsoft Azure AI Fundamentals: Computer Vision"
+        date: Sep 20, 2024
+        description: Azure AI basics.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/4LD3ZCUK
+      - title: "Microsoft Azure AI Fundamentals: AI Overview"
+        date: Sep 20, 2024
+        description: Azure AI basics.
+        href: https://learn.microsoft.com/api/achievements/share/en-us/danhtran2mind/DCSWVZ7J
+  - provider: OpenCV
+    note: 5 credentials · 2024-2025
+    items:
+      - title: Vision Language Model Bootcamp
+        date: Sep 17, 2025
+        description: "Free VLM course: CLIP & Qwen2.5-VL."
+        href: https://courses.opencv.org/certificates/722b6f87c7f2480da0d390d1f57121e5
+      - title: PyTorch Bootcamp
+        date: Sep 17, 2025
+        description: "Free PyTorch bootcamp: tensors to segmentation."
+        href: https://courses.opencv.org/certificates/a01b381eaae9471bafef979ad7197a2e
+      - title: FREE TensorFlow Keras Bootcamp
+        date: Mar 4, 2025
+        description: Learn CNNs, train custom image model.
+        href: https://courses.opencv.org/certificates/8036870dc30e40309db2321117120def
+      - title: OpenCV Bootcamp
+        date: Sep 29, 2024
+        description: "Master OpenCV: image, video, object detection."
+        href: https://courses.opencv.org/certificates/7e56e37fe25a44709b0d39dee24764ef
+      - title: Python for Beginners
+        date: Sep 29, 2024
+        description: Python fundamentals for AI careers.
+        href: https://courses.opencv.org/certificates/722b6f87c7f2480da0d390d1f57121e5
+  - provider: Cognitive Class
+    note: 5 credentials · 2024
+    items:
+      - title: Spark Fundamentals II
+        date: Oct 07, 2024
+        description: Advanced Spark RDD course.
+        href: https://courses.cognitiveclass.ai/certificates/4ff85ac4e4414a69b6741e87c3ba562c
+      - title: Deep Learning with TensorFlow
+        date: Oct 04, 2024
+        description: TensorFlow deep learning basics.
+        href: https://courses.cognitiveclass.ai/certificates/a6f8f3d1579d42dcbce416007e6313d8
+      - title: Deep Learning Fundamentals
+        date: Oct 04, 2024
+        description: Free intro to deep learning and CNNs.
+        href: https://courses.cognitiveclass.ai/certificates/c1ce87dee63645ed83b4972a6c12e847
+      - title: Machine Learning with Apache SystemML
+        date: Oct 03, 2024
+        description: Auto-scaling ML with R/Python-style syntax.
+        href: https://courses.cognitiveclass.ai/certificates/5e6790f5b8b844b693a2dfc8dfecee7b
+      - title: Simplifying data pipelines with Apache Kafka
+        date: Oct 03, 2024
+        description: Kafka basics and hands-on labs.
+        href: https://courses.cognitiveclass.ai/certificates/92e6840bb6ed4d518ffa737ec8efc162
+  - provider: NetAcad
+    note: 4 credentials · 2024
+    items:
+      - title: Data Analytics Essentials
+        date: Oct 30, 2024
+        description: Excel, SQL, Tableau data analytics course.
+        href: https://www.credly.com/badges/7fed13a3-a269-4a20-a177-57194ac41ad3
+      - title: JavaScript Essentials 1
+        date: Oct 16, 2024
+        description: JavaScript basics, certification, career boost.
+        href: https://www.credly.com/badges/e740f914-00b7-4ecf-bbd9-ae31aedc09f3
+      - title: Python Essentials 2
+        date: Sep 29, 2024
+        description: Advanced Python OOP and PCAP prep.
+        href: https://www.credly.com/badges/d589eb5b-d2f5-4c77-9c2e-67c9921896e1
+      - title: Python Essentials 1
+        date: Sep 26, 2024
+        description: Python fundamentals, PCEP prep, tech careers.
+        href: https://www.credly.com/badges/1c9274cf-d6b4-4f57-9647-60eeb5525415
+  - provider: Anthropic
+    note: 2 credentials · 2025
+    items:
+      - title: Introduction to Model Context Protocol
+        date: Sep 19, 2025
+        description: Master MCP integration for Claude services.
+        href: https://verify.skilljar.com/c/ydfdh6p4t453
+      - title: "Model Context Protocol: Advanced Topics"
+        date: Sep 19, 2025
+        description: Master MCP integration for Claude services.
+        href: https://verify.skilljar.com/c/ydfdh6p4t453
+  - provider: AWS Skill Builder
+    note: 2 credentials · 2024
+    items:
+      - title: Fundamentals of Analytics on AWS - Part 1
+        date: Oct 01, 2024
+        description: Analytics basics, 5 V's, AWS mapping.
+      - title: Building Language Models on AWS
+        date: Oct 01, 2024
+        description: SageMaker LLM training and deployment.
+  - provider: freeCodeCamp
+    note: 1 credential · 2024
+    items:
+      - title: Machine Learning with Python
+        date: Sep 30, 2024
+        description: "TensorFlow: neural nets, NLP, reinforcement learning."
+        href: https://www.freecodecamp.org/certification/danhtran2mind/machine-learning-with-python-v7

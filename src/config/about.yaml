@@ -1,25 +1,26 @@
-title: A bit about me.
-lede: The person behind the projects, the writing, and the curiosity.
+title: A doctor's training, an engineer's toolkit.
+lede: The person behind the models — medicine, machine learning, and a lot of Vietnamese data.
 
 intro:
-  eyebrow: "Hello, I'm Danh Tran"
-  display: I like turning ideas into useful things.
+  eyebrow: "Hello, I'm Tran Pham Cong Danh"
+  display: I turn messy domain data into AI people can use.
   body:
-    - "I'm a developer and lifelong learner. This is where I share what I'm working on, the ideas I'm exploring, and the lessons I pick up along the way."
-    - "I care about clear thinking, thoughtful details, and work that makes a difference. For me, making something is also a way of understanding it."
+    - "I started in medicine: an M.D. in general medicine from the University of Health Sciences, VNU-HCM. A master's in computer science at HCMUT came next, and the combination stuck — I like problems where a wrong answer has a real cost."
+    - "Today I work as an AI engineer on retrieval-augmented chatbots, speech recognition and synthesis, and vision models for Vietnamese documents and medical images. I care about citation accuracy, latency, and running models where the data already lives."
+    - "When I'm not training something, I'm usually reading about psychology, physics, or astronomy — or rewriting a README for the fourth time."
 
 currently:
   eyebrow: Currently
-  title: Building, learning, and connecting the dots.
+  title: Building Vietnamese-first AI, one pipeline at a time.
   link: A little better, every day.
 
 principles:
   - index: "01"
-    title: Build thoughtfully
-    description: Useful things, made with care.
+    title: Ground the answer
+    description: Retrieval, citations, and honest uncertainty beat a confident guess.
   - index: "02"
-    title: Stay curious
-    description: Ask questions. Explore possibilities.
+    title: Respect the data
+    description: Domain detail matters more than a bigger model.
   - index: "03"
-    title: Share the process
-    description: Make the lessons useful to others.
+    title: Ship and listen
+    description: A working demo teaches faster than a benchmark.

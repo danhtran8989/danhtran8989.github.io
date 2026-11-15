@@ -1,48 +1,114 @@
 title: Curriculum vitae.
-lede: "The full story: education, experience, and achievements."
+lede: Medicine, machine learning, and the work in between.
 
 panel:
   eyebrow: Curriculum vitae
-  name: Danh Tran
-  role: Developer & lifelong learner
+  role: AI Engineer · M.D., M.Eng.
   contact:
-    - dtmbatc@gmail.com
-    - danhtran8989.github.io
-    - Vietnam
+    - text: danhtran2mind@gmail.com
+      href: mailto:danhtran2mind@gmail.com
+    - text: danhtran2mind.github.io
+      href: https://danhtran2mind.github.io
+    - text: Ho Chi Minh City, Vietnam
   interests:
     eyebrow: Areas of interest
     items:
-      - Development
-      - Problem solving
-      - Continuous learning
+      - Natural language processing
+      - Computer vision
+      - Speech & audio
+      - MLOps & local inference
+      - Healthcare AI
   languages:
     eyebrow: Languages
     items:
-      - "English · Professional"
       - "Vietnamese · Native"
+      - "English · Professional"
   downloadLabel: Download full CV
 
 main:
-  eyebrow: Editable CV template · add your own background
+  eyebrow: Education, experience, and the tools I use
   sections:
     - heading: Profile
-      content:
-        - "Add a short introduction to your professional background, your interests, and the kind of work you want to pursue. Keep it focused, specific, and easy to scan."
+      text:
+        - "AI engineer with a Doctor of Medicine and a Master of Engineering in Computer Science, both from Vietnam National University Ho Chi Minh City. I build retrieval-augmented assistants, speech pipelines, and vision models for Vietnamese healthcare and document-heavy workflows."
+        - "My work sits close to production: citation accuracy, latency, data privacy, and models that run on local hardware when the data cannot leave the building."
+
     - heading: Experience
-      dates: Start year — Present
-      content:
-        - title: "Your role · Organization"
-        - "Describe your responsibilities, key contributions, and the impact of your work. Add specific results where you can, and keep the most relevant experience first."
+      entries:
+        - title: AI Engineer
+          meta: OSAS Joint Stock Company · via AI MED Technology Co., Ltd.
+          dates: Dec 2025 — Present
+          bullets:
+            - Primary AI engineer responsible for the core AI features of an intelligent chatbot product.
+            - Led the design and implementation of ASR, TTS, RAG, and local LLM optimisation.
+            - Built a hospital chatbot with multi-document retrieval and exact page-level citations.
+            - Developed multi-level financial report chat with automated dashboard generation.
+            - Ran R&D on multimodal triage, detecting common skin conditions from uploaded images.
+        - title: AI-Driven Marketing Supporter
+          meta: Karuna Veggie Restaurant
+          dates: Apr 2025 — May 2025
+          bullets:
+            - Used AI-assisted content and campaign analysis to grow brand visibility and customer engagement.
+        - title: Web Developer
+          meta: Dr. Nhung Dental Clinic
+          dates: Jan 2021 — Dec 2021
+          bullets:
+            - Architected a PHP–MySQL internal portal for patient records and revenue tracking.
+            - Built a responsive interface with a jQuery image gallery and optimised database queries.
+
     - heading: Education
-      dates: Start year — End year
-      content:
-        - title: Your degree or qualification
-        - subtitle: "Institution · Field of study"
-        - "Add relevant coursework, research, or academic achievements that support the work you want to do next."
-    - heading: Additional work & achievements
-      content:
-        - "Include publications, presentations, volunteering, awards, or other contributions relevant to your background."
+      entries:
+        - title: Master of Engineering, Computer Science
+          meta: Ho Chi Minh City University of Technology — VNU-HCM
+          dates: 2022 — 2024
+          bullets:
+            - "GPA 8.08 / 10 · Thesis: classification of blood pressure for patients treated at home."
+        - title: Doctor of Medicine, General Medicine
+          meta: University of Health Sciences — VNU-HCM
+          dates: 2014 — 2020
+          bullets:
+            - Six-year medical degree, the foundation for the healthcare side of my AI work.
+
+    - heading: Technical skills
+      entries:
+        - title: Programming
+          meta: Python (4.5/5), JavaScript (3.5/5), PHP (3/5), C++ (3/5)
+        - title: AI frameworks
+          meta: PyTorch, TensorFlow, Keras, scikit-learn, Ollama, ONNX
+        - title: Data & pipelines
+          meta: SQL (4.5/5), NoSQL, Spark, Kafka, Jupyter, Airflow, DuckDB, MinIO
+        - title: Python tooling
+          meta: OpenCV, NumPy, Pandas, Matplotlib, Gradio, Streamlit, LangChain
+        - title: Systems
+          meta: Git (4.5/5), Linux, Docker, REST APIs, Selenium
+        - title: Web
+          meta: HTML, CSS, Flask, FastAPI, Bootstrap
+
+    - heading: Selected projects
+      entries:
+        - title: Vietnamese Health Chat LoRA
+          href: https://github.com/danhtran2mind/Vietnamese-Health-Chat-LoRA
+          meta: LoRA fine-tuning · Vietnamese medical question answering
+        - title: BTCUSDT ML ETL Pipeline
+          href: https://github.com/danhtran2mind/BTCUSDT-ML-ETL-Pipeline
+          meta: Airflow · MinIO · Spark · DuckDB · LSTM forecasting
+        - title: Anime Super Resolution
+          href: https://github.com/danhtran2mind/Anime-Super-Resolution
+          meta: Real-ESRGAN fine-tune on 27,052 anime frames · Gradio demo
+        - title: SlimFace
+          href: https://github.com/danhtran2mind/SlimFace
+          meta: Transfer learning face recognition for edge devices
+        - title: Vietnamese F5-TTS
+          href: https://github.com/danhtran2mind/Vi-F5-TTS
+          meta: Vietnamese text-to-speech fine-tune on vin100h
+        - title: Vietnamese Whisper Tiny
+          href: https://github.com/danhtran2mind/Vi-Whisper-Tiny-finetuning
+          meta: Real-time Vietnamese ASR, local deployment
+
+    - heading: Certificates & training
+      text:
+        - "61 course certificates and skill badges across DataCamp, Kaggle, Microsoft Learn, OpenCV, Cognitive Class, Cisco NetAcad, Anthropic, AWS Skill Builder, and freeCodeCamp — with 20 public AI and data projects on GitHub."
       next:
-        label: Looking for a concise overview?
+        label: Looking for the short version?
         linkLabel: View resume
         href: /resume

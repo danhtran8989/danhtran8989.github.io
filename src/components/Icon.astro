@@ -1,6 +1,6 @@
 ---
 interface Props {
-	name: 'up-right' | 'right' | 'down' | 'sun' | 'moon' | 'menu' | 'close' | 'search';
+	name: 'up-right' | 'right' | 'down' | 'chevron' | 'sun' | 'moon' | 'menu' | 'close' | 'search';
 	class?: string;
 }
 
@@ -28,6 +28,13 @@ const { name, class: className = 'arrow' } = Astro.props;
 		<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
 			<path d="M12 5v14" />
 			<path d="m6 13 6 6 6-6" />
+		</svg>
+	)
+}
+{
+	name === 'chevron' && (
+		<svg class={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+			<path d="m6 9 6 6 6-6" />
 		</svg>
 	)
 }

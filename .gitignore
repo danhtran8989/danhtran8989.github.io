@@ -28,3 +28,6 @@ pnpm-debug.log*
 .opencode/*
 
 figma_template/*
+
+# source content used to seed src/config (clone of the al-folio site)
+data/

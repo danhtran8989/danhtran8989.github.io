@@ -1,34 +1,173 @@
-title: Work in progress.
-lede: A few things I'm building, exploring, and improving.
-sectionEyebrow: Current projects
-sectionNote: "Sample projects · Replace with your own work"
+title: Twenty projects, one direction.
+lede: Vietnamese-first AI — language, speech, vision, and the pipelines that move the data.
+
+sectionEyebrow: Open source & personal work
+sectionNote: "20 repositories across computer vision, NLP, audio, and data engineering."
 labels:
   scope: Scope
   stack: Stack
 
 projects:
-  - eyebrow: danhtran8989.github.io
-    mark: A space of my own.
-    status: In progress
-    title: Personal portfolio
-    description: "A home for my work, writing, and everything I'm learning."
-    meta: "HTML / CSS · GitHub Pages"
-    href: https://github.com/danhtran8989/danhtran8989.github.io
-  - eyebrow: The learning journal
-    mark: One idea at a time.
-    status: In progress
-    title: Learning journal
-    description: "A growing collection of notes, discoveries, and useful resources."
-    meta: "Markdown · Documentation"
-    href: https://github.com/danhtran8989
-  - eyebrow: Today, with intention
-    mark: Less noise. More focus.
-    status: In progress
-    title: Everyday taskboard
-    description: "A simple way to make space for the work that matters."
-    meta: "JavaScript · Local storage"
-    href: https://github.com/danhtran8989
+  - eyebrow: Natural Language Processing
+    mark: Answers with sources.
+    status: Open source
+    title: Vietnamese Health Chat LoRA
+    description: "LoRA fine-tuning that turns general LLMs into precise, context-aware Vietnamese healthcare assistants — with citations that point back to the source document."
+    meta: LoRA · Transformers · Gradio
+    href: https://github.com/danhtran2mind/Vietnamese-Health-Chat-LoRA
+
+  - eyebrow: Data Engineering
+    mark: From ticks to forecasts.
+    status: Open source
+    title: BTCUSDT ML ETL Pipeline
+    description: "A cloud-native ETL pipeline for BTC-USDT market data: Airflow orchestration, MinIO object storage, Spark processing, DuckDB analytics, and LSTM price forecasting."
+    meta: Airflow · Spark · DuckDB · MinIO
+    href: https://github.com/danhtran2mind/BTCUSDT-ML-ETL-Pipeline
+
+  - eyebrow: Computer Vision
+    mark: Detail, restored.
+    status: Open source
+    title: Anime Super Resolution
+    description: "A fine-tuned Real-ESRGAN trained on 27,052 anime frames at 1920×1080, with data processing, training, inference, and a Gradio demo."
+    meta: Real-ESRGAN · PyTorch · Gradio
+    href: https://github.com/danhtran2mind/Anime-Super-Resolution
+
+  - eyebrow: Computer Vision
+    mark: Small model, sharp eyes.
+    status: Open source
+    title: SlimFace
+    description: "Face recognition built on TorchVision transfer learning, tuned for edge devices with custom datasets and an interactive inference interface."
+    meta: TorchVision · Transfer learning
+    href: https://github.com/danhtran2mind/SlimFace
+
+  - eyebrow: Computer Vision
+    mark: Colour from scratch.
+    status: Open source
+    title: Grayscale2Color Landscape
+    description: "AutoEncoder, U-Net, and Transformer models written from scratch to predict Lab* colour channels for grayscale landscapes."
+    meta: PyTorch · U-Net · Transformer
+    href: https://github.com/danhtran2mind/gray2color-landscape-from-scratch
+
+  - eyebrow: Computer Vision
+    mark: Text becomes a scene.
+    status: Open source
+    title: Text to Video Ghibli Style
+    description: "Text-to-video generation in a Studio Ghibli palette, built on a fine-tuned zeroscope_v2_576w and an optimised MotionDirector pipeline."
+    meta: zeroscope · MotionDirector · Diffusers
+    href: https://github.com/danhtran2mind/Text2Video-Ghibli-style
+
+  - eyebrow: Audio
+    mark: Natural Vietnamese speech.
+    status: Open source
+    title: Vietnamese F5-TTS
+    description: "A Vietnamese text-to-speech model fine-tuned from F5-TTS on the vin100h dataset, aimed at voice assistants and audiobooks."
+    meta: F5-TTS · PyTorch · Gradio
+    href: https://github.com/danhtran2mind/Vi-F5-TTS
+
+  - eyebrow: Audio
+    mark: Real-time transcription.
+    status: Open source
+    title: Vietnamese Whisper Tiny
+    description: "OpenAI Whisper Tiny refined for Vietnamese transcription, with a Gradio interface and a Python API for efficient local deployment."
+    meta: Whisper · Transformers · Gradio
+    href: https://github.com/danhtran2mind/Vi-Whisper-Tiny-finetuning
+
+  - eyebrow: Natural Language Processing
+    mark: Guidance in Vietnamese.
+    status: Open source
+    title: Vietnamese Nutrition GPT-2
+    description: "GPT-2 fine-tuned on Hanoi Medical College's nutrition-in-rehabilitation textbook, served through a Gradio app and a Python API."
+    meta: GPT-2 · Fine-tuning · Gradio
+    href: https://github.com/danhtran2mind/vi-nutrition-gpt2-finetune
+
+  - eyebrow: Natural Language Processing
+    mark: Shorter, still accurate.
+    status: Open source
+    title: Viet News Summary mT5
+    description: "A fine-tuned mT5-small summariser for Vietnamese news, trained for low loss and strong BLEU on long articles."
+    meta: mT5 · Seq2seq · Transformers
+    href: https://github.com/danhtran2mind/viet-news-sum-mt5-small-finetune
+
+  - eyebrow: Natural Language Processing
+    mark: Nine categories, one pass.
+    status: Open source
+    title: Vietnamese News Classification
+    description: "A lightweight neural classifier that sorts Vietnamese news into nine topical categories with a small memory footprint."
+    meta: PyTorch · Text classification
+    href: https://github.com/danhtran2mind/Vietnamese-News-Classification
+
+  - eyebrow: Natural Language Processing
+    mark: Medical Q&A, tuned.
+    status: Open source
+    title: Vietnamese Medical mT5 Q&A
+    description: "A question-answering model fine-tuned on Vietnamese medical text, built for short, grounded answers in a clinical register."
+    meta: mT5 · Question answering
+    href: https://github.com/danhtran2mind/vi-medical-mt5-finetune-qa
+
+  - eyebrow: Audio
+    mark: Words into music.
+    status: Open source
+    title: Text2Music Composer
+    description: "An experiment in turning short text prompts into musical sketches, with a Gradio front end for quick listening."
+    meta: Audio generation · Gradio
+    href: https://github.com/danhtran2mind/Text2Music-Composer
+
+  - eyebrow: Audio
+    mark: Two voices, one model.
+    status: Open source
+    title: Viet SpeechT5 TTS
+    description: "A Vietnamese speech-synthesis model fine-tuned for male and female voices, packaged with a Gradio demo."
+    meta: SpeechT5 · Transformers
+    href: https://github.com/danhtran2mind/Viet-SpeechT5-TTS-finetuning
+
+  - eyebrow: Audio
+    mark: Glow-TTS, localised.
+    status: Open source
+    title: Viet Glow-TTS
+    description: "Glow-TTS fine-tuning for Vietnamese, converting written text into natural-sounding speech."
+    meta: Glow-TTS · Coqui
+    href: https://github.com/danhtran2mind/Viet-Glow-TTS-finetuning
+
+  - eyebrow: Computer Vision
+    mark: Read the plate.
+    status: Open source
+    title: License Plate Detector OCR
+    description: "Plate detection followed by character recognition, combining classical computer vision with OCR post-processing."
+    meta: OpenCV · OCR
+    href: https://github.com/danhtran2mind/License-Plate-Detector-OCR
+
+  - eyebrow: Computer Vision
+    mark: Pose in, image out.
+    status: Open source
+    title: ControlNet Image Generator
+    description: "Pose-conditioned image generation with ControlNet, turning a human pose skeleton into a finished render."
+    meta: ControlNet · Stable Diffusion
+    href: https://github.com/danhtran2mind/ControlNet-Image-Generator
+
+  - eyebrow: Computer Vision
+    mark: A softer palette.
+    status: Open source
+    title: Ghibli Stable Diffusion
+    description: "Stable Diffusion fine-tuned on Ghibli-style artwork for illustration and concept sketches."
+    meta: Stable Diffusion · LoRA
+    href: https://github.com/danhtran2mind/Ghibli-Stable-Diffusion-Synthesis
+
+  - eyebrow: Natural Language Processing
+    mark: Two languages, one model.
+    status: Open source
+    title: English–Vietnamese Translation
+    description: "A Transformer translation model built from scratch in TensorFlow, with an interactive Gradio demo for side-by-side output."
+    meta: TensorFlow · Transformer
+    href: https://github.com/danhtran2mind/En-Vi-Translatetion-Transformer-TensorFlow
+
+  - eyebrow: Big Data
+    mark: Buses, live.
+    status: Open source
+    title: Bus GPS Real-time Visualization
+    description: "A streaming pipeline that ingests Rio de Janeiro bus GPS data through Kafka and renders live positions on a Flask map."
+    meta: Kafka · Flask · Streaming
+    href: https://github.com/danhtran2mind/bus-gps-real-time-visualization
 
 cta:
-  title: Have an idea worth exploring?
+  title: Have a data problem worth solving?
   linkLabel: Get in touch

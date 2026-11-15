@@ -2,15 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
-import { certificates, site } from '../data/site';
+import { certificateGroups, site } from '../data/site';
 import { certificatesConfig } from '../data/config';
 
 const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesConfig;
+const total = certificateGroups.reduce((sum, group) => sum + group.items.length, 0);
 ---
 
 <Layout
 	title={`Certificates — ${site.name}`}
-	description="Course completions, programs, and learning milestones."
+	description="Course completions, programs, and learning milestones, grouped by provider."
 >
 	<PageHero path="/certificates" title={title} lede={lede} />
 
@@ -21,27 +22,69 @@ const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesC
 				<p class="section-note">{sectionNote}</p>
 			</div>
 
-			<ul class="cert-grid">
+			<ul class="provider-jump">
 				{
-					certificates.map((certificate) => (
-						<li class="cert-card">
-							<span class="cert-index">{certificate.index}</span>
-							<p class="eyebrow cert-type">{certificate.type}</p>
-							<h2 class="cert-title">{certificate.title}</h2>
-							<p class="cert-issuer">{certificate.issuer}</p>
-							<p class="cert-desc">{certificate.description}</p>
-							<a class="link-arrow cert-link" href="#" aria-label={`View certificate: ${certificate.title}`}>
-								View certificate <Icon name="up-right" />
+					certificateGroups.map((group) => (
+						<li>
+							<a href={`#${group.provider.toLowerCase().replace(/\s+/g, '-')}`}>
+								{group.provider}
+								<span>{String(group.items.length).padStart(2, '0')}</span>
 							</a>
 						</li>
 					))
 				}
 			</ul>
 
+			<div class="provider-list">
+				{
+					certificateGroups.map((group) => (
+						<section class="provider" id={group.provider.toLowerCase().replace(/\s+/g, '-')}>
+							<header class="provider__head">
+								<h2 class="provider__name">{group.provider}</h2>
+								<p class="provider__note">{group.note}</p>
+							</header>
+
+							<ul class="cert-grid">
+								{group.items.map((certificate) => (
+									<li class="cert-card">
+										<p class="eyebrow cert-date">{certificate.date}</p>
+										<h3 class="cert-title">
+											{certificate.href ? (
+												<a href={certificate.href} target="_blank" rel="noopener noreferrer">
+													{certificate.title}
+												</a>
+											) : (
+												certificate.title
+											)}
+										</h3>
+										<p class="cert-desc">{certificate.description}</p>
+										{certificate.href ? (
+											<a
+												class="link-arrow cert-link"
+												href={certificate.href}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label={`Verify certificate: ${certificate.title}`}
+											>
+												View certificate <Icon name="up-right" />
+											</a>
+										) : (
+											<span class="cert-link cert-link--muted">Issued badge · no public link</span>
+										)}
+									</li>
+								))}
+							</ul>
+						</section>
+					))
+				}
+			</div>
+
 			<div class="learning-band">
 				<h2 class="band-title">{learningBand.title}</h2>
 				<div class="band-copy">
-					<p>{learningBand.question}</p>
+					<p>
+						{total} credentials in total. {learningBand.question}
+					</p>
 					<a class="link-arrow" href="/certifications">
 						{learningBand.linkLabel} <Icon name="right" />
 					</a>
@@ -52,17 +95,82 @@ const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesC
 </Layout>
 
 <style>
+	.provider-jump {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 8px;
+		margin-bottom: clamp(30px, 3.4vw, 44px);
+	}
+
+	.provider-jump a {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		padding: 8px 12px;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-sm);
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--muted);
+		transition:
+			border-color 160ms ease,
+			color 160ms ease,
+			background-color 160ms ease;
+	}
+
+	.provider-jump a span {
+		font-size: 10px;
+		color: var(--accent);
+	}
+
+	.provider-jump a:hover {
+		border-color: var(--line-strong);
+		background: var(--surface);
+		color: var(--ink);
+	}
+
+	.provider + .provider {
+		margin-top: clamp(34px, 4vw, 56px);
+		padding-top: clamp(30px, 3.6vw, 46px);
+		border-top: 1px solid var(--line);
+	}
+
+	.provider__head {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 16px;
+		flex-wrap: wrap;
+		margin-bottom: clamp(18px, 2.2vw, 26px);
+	}
+
+	.provider__name {
+		font-size: clamp(22px, 2.4vw, 30px);
+		font-weight: 600;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+	}
+
+	.provider__note {
+		font-size: 11px;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
 	.cert-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-		gap: clamp(20px, 2.6vw, 32px);
+		grid-template-columns: repeat(auto-fill, minmax(258px, 1fr));
+		gap: clamp(14px, 1.6vw, 20px);
 	}
 
 	.cert-card {
-		position: relative;
 		display: flex;
 		flex-direction: column;
-		padding: clamp(24px, 2.6vw, 32px);
+		padding: clamp(18px, 1.9vw, 23px);
 		border: 1px solid var(--line);
 		border-radius: var(--radius-md);
 		background: var(--surface);
@@ -78,47 +186,43 @@ const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesC
 		box-shadow: var(--shadow-md);
 	}
 
-	.cert-index {
-		font-family: var(--font-display);
-		font-size: clamp(26px, 2.6vw, 32px);
-		font-weight: 600;
-		line-height: 1;
-		letter-spacing: -0.03em;
-		color: var(--accent);
-	}
-
-	.cert-type {
-		margin-top: 24px;
+	.cert-date {
 		font-size: 10px;
 	}
 
 	.cert-title {
-		margin-top: 12px;
-		font-size: clamp(21px, 2vw, 25px);
+		margin-top: 10px;
+		font-size: 17px;
 		font-weight: 600;
-		line-height: 1.18;
-		letter-spacing: -0.025em;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
 	}
 
-	.cert-issuer {
-		margin-top: 6px;
-		font-size: 13.5px;
-		color: var(--muted);
+	.cert-title a {
+		transition: color 160ms ease;
+	}
+
+	.cert-title a:hover {
+		color: var(--accent);
 	}
 
 	.cert-desc {
-		margin-top: 18px;
-		font-size: 15px;
-		line-height: 1.6;
+		margin-top: 8px;
+		font-size: 13.5px;
+		line-height: 1.55;
 		color: var(--muted);
 	}
 
 	.cert-link {
-		margin-top: 28px;
-		padding-top: 18px;
-		border-top: 1px solid var(--line);
-		font-size: 13px;
+		margin-top: auto;
+		padding-top: 16px;
+		font-size: 12px;
 		letter-spacing: 0.04em;
+	}
+
+	.cert-link--muted {
+		color: var(--muted);
+		opacity: 0.75;
 	}
 
 	.learning-band {
@@ -127,7 +231,7 @@ const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesC
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		align-items: center;
 		gap: clamp(24px, 3vw, 40px);
-		margin-top: clamp(28px, 3vw, 40px);
+		margin-top: clamp(40px, 4.4vw, 60px);
 		padding: clamp(30px, 4vw, 54px);
 		overflow: hidden;
 		border-radius: var(--radius-md);
