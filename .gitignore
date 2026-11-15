@@ -23,8 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-.github/*
-
 .opencode/*
 
 figma_template/*
