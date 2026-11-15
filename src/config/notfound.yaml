@@ -1,0 +1,10 @@
+title: "A page that isn't here."
+lede: "The link may be old, or the page may have moved. Here are a few places to go next."
+buttonLabel: Back to home
+links:
+  - label: Projects
+    href: /projects
+  - label: Blog
+    href: /blog
+  - label: Resume
+    href: /resume

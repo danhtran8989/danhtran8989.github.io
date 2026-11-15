@@ -1,0 +1,48 @@
+title: Curriculum vitae.
+lede: "The full story: education, experience, and achievements."
+
+panel:
+  eyebrow: Curriculum vitae
+  name: Dan Tran
+  role: Developer & lifelong learner
+  contact:
+    - dtmbatc@gmail.com
+    - danhtran8989.github.io
+    - Vietnam
+  interests:
+    eyebrow: Areas of interest
+    items:
+      - Development
+      - Problem solving
+      - Continuous learning
+  languages:
+    eyebrow: Languages
+    items:
+      - "English · Professional"
+      - "Vietnamese · Native"
+  downloadLabel: Download full CV
+
+main:
+  eyebrow: Editable CV template · add your own background
+  sections:
+    - heading: Profile
+      content:
+        - "Add a short introduction to your professional background, your interests, and the kind of work you want to pursue. Keep it focused, specific, and easy to scan."
+    - heading: Experience
+      dates: Start year — Present
+      content:
+        - title: "Your role · Organization"
+        - "Describe your responsibilities, key contributions, and the impact of your work. Add specific results where you can, and keep the most relevant experience first."
+    - heading: Education
+      dates: Start year — End year
+      content:
+        - title: Your degree or qualification
+        - subtitle: "Institution · Field of study"
+        - "Add relevant coursework, research, or academic achievements that support the work you want to do next."
+    - heading: Additional work & achievements
+      content:
+        - "Include publications, presentations, volunteering, awards, or other contributions relevant to your background."
+      next:
+        label: Looking for a concise overview?
+        linkLabel: View resume
+        href: /resume

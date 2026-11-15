@@ -1,0 +1,37 @@
+title: The short version.
+lede: A focused overview of my experience, skills, and selected work.
+
+card:
+  name: Dan Tran
+  meta: "Developer & lifelong learner · Vietnam · dtmbatc@gmail.com"
+  sections:
+    - eyebrow: Profile
+      copy: "A brief professional summary focused on your strengths, experience, and the opportunities you're looking for."
+    - eyebrow: Experience
+      role: "Your role · Organization"
+      dates: Year — Present
+      bullets:
+        - Highlight an achievement and the result it delivered.
+        - Show how you solved a problem or improved a process.
+    - eyebrow: Selected project
+      project: Personal portfolio
+      copy: "A home for my work, writing, and everything I'm learning."
+    - eyebrow: Education
+      copy: Your degree or qualification
+      muted: "Institution · Graduation year"
+    - eyebrow: Skills
+      copy: Your core skills
+      muted: Tools, technologies, and methods
+
+side:
+  intro:
+    eyebrow: One page. The essentials.
+    title: A quick introduction.
+    downloadLabel: Download resume
+  note:
+    eyebrow: Editable resume template
+    text: Replace the sample details with your experience and attach your PDF for download.
+  next:
+    title: Want the full background?
+    linkLabel: View curriculum vitae
+    href: /cv

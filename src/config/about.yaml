@@ -1,0 +1,25 @@
+title: A bit about me.
+lede: The person behind the projects, the writing, and the curiosity.
+
+intro:
+  eyebrow: "Hello, I'm Dan Tran"
+  display: I like turning ideas into useful things.
+  body:
+    - "I'm a developer and lifelong learner. This is where I share what I'm working on, the ideas I'm exploring, and the lessons I pick up along the way."
+    - "I care about clear thinking, thoughtful details, and work that makes a difference. For me, making something is also a way of understanding it."
+
+currently:
+  eyebrow: Currently
+  title: Building, learning, and connecting the dots.
+  link: A little better, every day.
+
+principles:
+  - index: "01"
+    title: Build thoughtfully
+    description: Useful things, made with care.
+  - index: "02"
+    title: Stay curious
+    description: Ask questions. Explore possibilities.
+  - index: "03"
+    title: Share the process
+    description: Make the lessons useful to others.

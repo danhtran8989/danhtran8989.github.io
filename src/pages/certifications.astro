@@ -1,0 +1,252 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { certificationsConfig } from '../data/config';
+
+const { title, lede, section, credentials, moreBand } = certificationsConfig;
+---
+<Layout title={`Certifications — ${site.name}`} description={lede}>
+	<PageHero path="/certifications" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">{section.eyebrow}</p>
+				<p class="section-note">{section.note}</p>
+			</div>
+
+			<ul class="cred-grid">
+				{
+					credentials.map((credential) => (
+						<li class:list={['cred-card', { 'cred-card--panel': credential.panel }]}>
+							<p class:list={['eyebrow', { 'eyebrow--panel': credential.panel }]}>
+								{credential.eyebrow}
+							</p>
+							<h2 class="cred-title">{credential.title}</h2>
+							<p class="cred-provider">{credential.provider}</p>
+
+							<dl class="cred-dates">
+								<div>
+									<dt>Issued</dt>
+									<dd>{credential.issued}</dd>
+								</div>
+								<div>
+									<dt>Valid until</dt>
+									<dd>{credential.valid}</dd>
+								</div>
+							</dl>
+
+							<div class="cred-foot">
+								<a
+									class:list={['cred-link', { 'cred-link--panel': credential.panel }]}
+									href="#"
+								>
+									Verify credential <Icon name="up-right" />
+								</a>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+
+			<div class="more-band">
+				<h2 class="more-title">{moreBand.title}</h2>
+				<div class="more-copy">
+					{moreBand.lines.map((line) => <p>{line}</p>)}
+					<p>
+						{moreBand.linkPrefix}{' '}
+						<a class="inline-link" href="/certificates">
+							{moreBand.linkLabel} <Icon name="right" />
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.cred-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 28px;
+	}
+
+	.cred-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		min-height: 304px;
+		padding: clamp(26px, 3vw, 36px);
+		overflow: hidden;
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		background: var(--surface);
+		transition:
+			border-color 200ms ease,
+			box-shadow 200ms ease;
+	}
+
+	.cred-card:hover {
+		border-color: var(--line-strong);
+		box-shadow: var(--shadow-md);
+	}
+
+	.cred-card--panel {
+		border-color: transparent;
+		background:
+			radial-gradient(80% 60% at 86% 0%, rgba(167, 139, 250, 0.32), transparent 64%),
+			linear-gradient(160deg, var(--panel-2), var(--panel));
+		color: var(--on-panel);
+		box-shadow: var(--shadow-md);
+	}
+
+	.cred-card--panel::before {
+		content: '';
+		position: absolute;
+		top: -30%;
+		right: -30%;
+		width: 84%;
+		aspect-ratio: 1;
+		border: 1px solid var(--panel-line);
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.cred-card--panel > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.cred-title {
+		margin-top: 34px;
+		font-size: clamp(24px, 2.4vw, 30px);
+		font-weight: 600;
+		line-height: 1.12;
+		letter-spacing: -0.03em;
+	}
+
+	.cred-provider {
+		margin-top: 8px;
+		font-size: 14.5px;
+		color: var(--muted);
+	}
+
+	.cred-card--panel .cred-provider {
+		color: var(--panel-muted);
+	}
+
+	.cred-dates {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px;
+		margin-top: 30px;
+		margin-bottom: 24px;
+	}
+
+	.cred-dates dt {
+		font-size: 11px;
+		font-weight: 600;
+		letter-spacing: 0.11em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.cred-card--panel .cred-dates dt {
+		color: var(--panel-muted);
+	}
+
+	.cred-dates dd {
+		margin: 7px 0 0;
+		font-size: 15.5px;
+		line-height: 1.4;
+	}
+
+	.cred-foot {
+		margin-top: auto;
+		padding-top: 24px;
+		border-top: 1px solid var(--line);
+	}
+
+	.cred-card--panel .cred-foot {
+		border-top-color: var(--panel-line);
+	}
+
+	.cred-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+		font-size: 14.5px;
+		font-weight: 600;
+		transition: color 160ms ease;
+	}
+
+	.cred-link:hover {
+		color: var(--accent);
+	}
+
+	.cred-link--panel {
+		color: var(--panel-accent);
+	}
+
+	.cred-link--panel:hover {
+		color: var(--on-panel);
+	}
+
+	.more-band {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+		gap: 32px;
+		margin-top: clamp(36px, 4vw, 50px);
+		padding-top: clamp(26px, 3vw, 34px);
+		border-top: 1px solid var(--line);
+	}
+
+	.more-title {
+		font-size: clamp(24px, 2.4vw, 30px);
+		font-weight: 600;
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+	}
+
+	.more-copy {
+		font-size: 15.5px;
+		line-height: 1.7;
+		color: var(--muted);
+	}
+
+	.more-copy p + p {
+		margin-top: 2px;
+	}
+
+	.inline-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: var(--ink);
+		font-weight: 500;
+		transition: color 160ms ease;
+	}
+
+	.inline-link .arrow {
+		width: 15px;
+		height: 15px;
+	}
+
+	.inline-link:hover {
+		color: var(--accent);
+	}
+
+	@media (max-width: 840px) {
+		.cred-grid,
+		.more-band {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.more-band {
+			gap: 12px;
+		}
+	}
+</style>

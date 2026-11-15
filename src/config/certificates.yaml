@@ -1,0 +1,26 @@
+title: Learning, documented.
+lede: Course completions, programs, and learning milestones.
+sectionEyebrow: "Course & program completions"
+sectionNote: "Credential placeholders — add your own details."
+
+certificates:
+  - index: "01"
+    type: Course certificate
+    title: Your course or program
+    issuer: "Issuing organization · Year"
+    description: "Describe what you studied and the key skills you developed across the program."
+  - index: "02"
+    type: Specialization certificate
+    title: Your specialization
+    issuer: "Issuing organization · Year"
+    description: "Add a focused learning program or a sequence of related courses and projects."
+  - index: "03"
+    type: Workshop certificate
+    title: Your workshop or training
+    issuer: "Issuing organization · Year"
+    description: "Include practical training, workshops, or professional development you completed."
+
+learningBand:
+  title: A record of continued learning.
+  question: Looking for exam-based professional credentials?
+  linkLabel: Explore certifications

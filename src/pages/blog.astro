@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { blogPosts, site } from '../data/site';
+import { blogConfig } from '../data/config';
+
+const [featured, ...latest] = blogPosts;
+const { title, lede, featuredLabel, latestLabel, latestNote } = blogConfig;
+---
+
+<Layout title={`Blog — ${site.name}`} description={lede}>
+	<PageHero path="/blog" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container">
+			<a class="featured" href={`/blog/${featured.slug}`}>
+				<div>
+					<p class="eyebrow eyebrow--panel">Featured <span aria-hidden="true">·</span> {featuredLabel}</p>
+					<h2 class="featured__title">{featured.title}</h2>
+					<p class="featured__meta">{featured.category} <span aria-hidden="true">/</span> {featured.read}</p>
+				</div>
+				<Icon name="up-right" class="featured__arrow" />
+			</a>
+
+			<div class="section-head notes-head">
+				<p class="eyebrow">{latestLabel}</p>
+				<p class="section-note">{latestNote}</p>
+			</div>
+
+			<ul class="post-list">
+				{
+					latest.map((post) => (
+						<li>
+							<a class="post-row" href={`/blog/${post.slug}`}>
+								<span class="post-row__category">{post.category}</span>
+								<span class="post-row__main">
+									<span class="post-row__title">{post.title}</span>
+									<span class="post-row__read">{post.read}</span>
+								</span>
+								<Icon name="up-right" class="post-row__arrow" />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.featured {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 32px;
+		min-height: 240px;
+		padding: clamp(28px, 3.4vw, 44px);
+		overflow: hidden;
+		border-radius: var(--radius-md);
+		background:
+			radial-gradient(70% 70% at 86% 4%, rgba(167, 139, 250, 0.34), transparent 64%),
+			linear-gradient(160deg, var(--panel-2), var(--panel));
+		color: var(--on-panel);
+		box-shadow: var(--shadow-md);
+		transition: transform 200ms ease;
+	}
+
+	.featured::before {
+		content: '';
+		position: absolute;
+		right: -14%;
+		bottom: -58%;
+		width: 48%;
+		aspect-ratio: 1;
+		border: 1px solid var(--panel-line);
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.featured:hover {
+		transform: translateY(-2px);
+	}
+
+	.featured > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.featured__title {
+		margin-top: 22px;
+		max-width: 22ch;
+		font-size: clamp(29px, 3.4vw, 46px);
+		font-weight: 600;
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.featured__meta {
+		margin-top: clamp(28px, 4vw, 46px);
+		font-size: 10.5px;
+		font-weight: 500;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--panel-muted);
+	}
+
+	.featured__meta span {
+		margin-inline: 8px;
+		opacity: 0.6;
+	}
+
+	:global(.featured__arrow) {
+		width: clamp(26px, 2.4vw, 32px);
+		height: clamp(26px, 2.4vw, 32px);
+		color: var(--panel-accent);
+		transition: transform 180ms ease;
+	}
+
+	.featured:hover :global(.featured__arrow) {
+		transform: translate(4px, -4px);
+	}
+
+	.notes-head {
+		margin-top: clamp(44px, 5vw, 64px);
+		margin-bottom: 8px;
+	}
+
+	.post-list {
+		border-bottom: 1px solid var(--line);
+	}
+
+	.post-row {
+		display: grid;
+		grid-template-columns: 168px minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 24px;
+		padding: 25px 2px;
+		border-top: 1px solid var(--line);
+		transition: color 160ms ease;
+	}
+
+	.post-row:hover {
+		color: var(--accent);
+	}
+
+	.post-row__category {
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.post-row__main {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.post-row__title {
+		font-family: var(--font-display);
+		font-size: clamp(18px, 1.7vw, 22px);
+		font-weight: 500;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.post-row__read {
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	:global(.post-row__arrow) {
+		width: 21px;
+		height: 21px;
+		color: var(--ink);
+		transition:
+			transform 160ms ease,
+			color 160ms ease;
+	}
+
+	.post-row:hover :global(.post-row__arrow) {
+		transform: translate(3px, -3px);
+		color: var(--accent);
+	}
+
+	@media (max-width: 760px) {
+		.featured {
+			align-items: flex-end;
+			min-height: 0;
+		}
+
+		:global(.featured__arrow) {
+			display: none;
+		}
+
+		.post-row {
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 8px 18px;
+			padding: 22px 2px;
+		}
+
+		.post-row__category {
+			grid-column: 1;
+		}
+
+		.post-row__main {
+			grid-column: 1;
+			grid-row: 2;
+		}
+
+		:global(.post-row__arrow) {
+			grid-column: 2;
+			grid-row: 1 / span 2;
+		}
+	}
+</style>

@@ -1,0 +1,34 @@
+name: Dan Tran
+domain: danhtran8989.github.io
+email: dtmbatc@gmail.com
+
+nav:
+  - label: About
+    href: /
+  - label: Blog
+    href: /blog
+  - label: CV
+    href: /cv
+  - label: Resume
+    href: /resume
+  - label: Projects
+    href: /projects
+  - label: Certificates
+    href: /certificates
+  - label: Certifications
+    href: /certifications
+
+socials:
+  - label: GitHub
+    href: https://github.com/danhtran8989
+  - label: LinkedIn
+    href: https://www.linkedin.com/in/danhtran8989/
+  - label: Email
+    href: mailto:dtmbatc@gmail.com
+    text: dtmbatc@gmail.com
+
+footer:
+  eyebrow: Get in touch
+  note: A work in progress, just like me.
+  linksLabel: Elsewhere
+  contactLabel: Contact

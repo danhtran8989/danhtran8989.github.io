@@ -1,0 +1,27 @@
+title: Knowledge, validated.
+lede: Professional credentials earned through assessment and examination.
+
+section:
+  eyebrow: Professional credentials
+  note: Credential placeholders — add your own details.
+
+credentials:
+  - eyebrow: Exam-based credential
+    title: Your certification name
+    provider: "Certification provider · Credential level"
+    issued: Month / Year
+    valid: Month / Year or no expiry
+    panel: true
+  - eyebrow: Exam-based credential
+    title: Your next certification
+    provider: "Certification provider · Credential level"
+    issued: Month / Year
+    valid: Month / Year or no expiry
+    panel: false
+
+moreBand:
+  title: More than course completion.
+  lines:
+    - Professional certifications validate knowledge through formal assessment.
+  linkPrefix: "For courses and training programs,"
+  linkLabel: explore certificates

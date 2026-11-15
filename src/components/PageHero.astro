@@ -1,0 +1,20 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+	path: string;
+	title: string;
+	lede: string;
+}
+
+const { path, title, lede } = Astro.props;
+---
+
+<section class="page-hero">
+	<div class="container">
+		<p class="crumb">{site.domain}{path}</p>
+		<h1 class="page-title">{title}</h1>
+		<p class="page-lede">{lede}</p>
+		<div class="page-hero__foot"></div>
+	</div>
+</section>

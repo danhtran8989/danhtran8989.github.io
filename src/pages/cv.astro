@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { cvConfig } from '../data/config';
+
+const { title, lede, panel, main } = cvConfig;
+---
+<Layout title={`CV — ${site.name}`} description={lede}>
+	<PageHero path="/cv" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container cv-grid">
+			<aside class="cv-panel">
+				<div>
+					<p class="eyebrow eyebrow--panel">{panel.eyebrow}</p>
+					<h2 class="cv-name">{site.name}</h2>
+					<p class="cv-role">{panel.role}</p>
+
+					<div class="cv-block">
+						<p class="eyebrow eyebrow--panel">Contact</p>
+						<ul class="cv-list">
+							{
+								panel.contact.map((item) => (
+									<li>
+										{item.includes('@') ? (
+											<a href={`mailto:${item}`}>{item}</a>
+										) : item.includes('.') ? (
+											<a href={`https://${item}`} target="_blank" rel="noopener noreferrer">
+												{item}
+											</a>
+										) : (
+											item
+										)}
+									</li>
+								))
+							}
+						</ul>
+					</div>
+
+					<div class="cv-block">
+						<p class="eyebrow eyebrow--panel">{panel.interests.eyebrow}</p>
+						<ul class="cv-list">
+							{panel.interests.items.map((item) => <li>{item}</li>)}
+						</ul>
+					</div>
+
+					<div class="cv-block">
+						<p class="eyebrow eyebrow--panel">{panel.languages.eyebrow}</p>
+						<ul class="cv-list">
+							{panel.languages.items.map((item) => <li>{item}</li>)}
+						</ul>
+					</div>
+				</div>
+
+				<button class="btn btn--block cv-download" type="button" data-print>
+					{panel.downloadLabel} <Icon name="down" />
+				</button>
+			</aside>
+
+			<div class="cv-main">
+				<p class="eyebrow">{main.eyebrow}</p>
+
+				{
+					main.sections.map((section) => (
+						<section class="cv-section">
+							<div>
+								<h2 class="cv-heading">{section.heading}</h2>
+								{section.dates && <p class="cv-dates">{section.dates}</p>}
+							</div>
+							<div class="cv-content">
+								{section.content.map((block) =>
+									typeof block === 'string' ? (
+										<p>{block}</p>
+									) : block.title ? (
+										<h3>{block.title}</h3>
+									) : block.subtitle ? (
+										<p class="cv-subtle">{block.subtitle}</p>
+									) : null,
+								)}
+								{section.next && (
+									<p class="cv-next">
+										<span>{section.next.label}</span>
+										<a class="link-arrow link-arrow--accent" href={section.next.href}>
+											{section.next.linkLabel} <Icon name="right" />
+										</a>
+									</p>
+								)}
+							</div>
+						</section>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.cv-grid {
+		display: grid;
+		grid-template-columns: minmax(280px, 340px) minmax(0, 1fr);
+		gap: clamp(36px, 5vw, 64px);
+		align-items: start;
+	}
+
+	.cv-panel {
+		position: sticky;
+		top: calc(var(--header-height) + 24px);
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 48px;
+		min-height: 780px;
+		padding: clamp(28px, 3vw, 38px);
+		border-radius: var(--radius-md);
+		background:
+			radial-gradient(70% 50% at 88% 4%, rgba(167, 139, 250, 0.28), transparent 62%),
+			linear-gradient(165deg, var(--panel-2), var(--panel));
+		color: var(--on-panel);
+		box-shadow: var(--shadow-md);
+	}
+
+	.cv-name {
+		margin-top: 42px;
+		font-size: clamp(32px, 3.1vw, 40px);
+		font-weight: 600;
+		line-height: 1.1;
+		letter-spacing: -0.035em;
+	}
+
+	.cv-role {
+		margin-top: 6px;
+		font-size: 16px;
+		color: var(--panel-muted);
+	}
+
+	.cv-block {
+		margin-top: 40px;
+	}
+
+	.cv-list {
+		margin-top: 14px;
+		font-size: 15px;
+		line-height: 1.8;
+		color: var(--on-panel);
+	}
+
+	.cv-list a {
+		transition: color 160ms ease;
+	}
+
+	.cv-list a:hover {
+		color: var(--panel-accent);
+	}
+
+	.cv-download {
+		background: var(--panel-accent);
+		color: var(--panel);
+	}
+
+	.cv-download:hover {
+		background: var(--on-panel);
+		color: var(--panel);
+	}
+
+	:root[data-theme='dark'] .cv-download {
+		color: var(--panel);
+	}
+
+	.cv-main {
+		padding-top: 6px;
+	}
+
+	.cv-section {
+		display: grid;
+		grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+		gap: clamp(24px, 4vw, 56px);
+		padding-block: clamp(28px, 3.4vw, 40px);
+		border-top: 1px solid var(--line);
+	}
+
+	.cv-main > .eyebrow + .cv-section {
+		margin-top: 32px;
+	}
+
+	.cv-heading {
+		font-size: clamp(24px, 2.5vw, 30px);
+		font-weight: 600;
+		line-height: 1.2;
+		letter-spacing: -0.03em;
+	}
+
+	.cv-dates {
+		margin-top: 12px;
+		font-size: 13.5px;
+		color: var(--muted);
+	}
+
+	.cv-content {
+		font-size: 16.5px;
+		line-height: 1.65;
+		color: var(--muted);
+	}
+
+	.cv-content h3 {
+		font-size: clamp(20px, 1.9vw, 23px);
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--ink);
+	}
+
+	.cv-content p {
+		margin-top: 10px;
+	}
+
+	.cv-content .cv-subtle {
+		font-size: 15px;
+		color: var(--muted);
+		opacity: 0.85;
+	}
+
+	.cv-next {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		flex-wrap: wrap;
+		margin-top: 28px !important;
+		font-size: 15px;
+		color: var(--ink);
+	}
+
+	.cv-next span {
+		font-weight: 600;
+	}
+
+	@media (max-width: 980px) {
+		.cv-grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.cv-panel {
+			position: static;
+			min-height: 0;
+			gap: 36px;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.cv-section {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 14px;
+		}
+	}
+</style>

@@ -1,0 +1,29 @@
+hero:
+  eyebrow: Portfolio · 2026
+  title: I build thoughtful
+  titleAccent: digital things.
+  lede: "I'm Dan Tran — a developer and lifelong learner turning ideas into clear, useful experiences."
+  primaryLabel: Explore my work
+  secondaryLabel: More about me
+
+about:
+  eyebrow: About me
+  title: Curious by default, careful by habit.
+  body: "I like the part where an idea becomes something you can actually use. This site is where I keep the work, the notes, and the things I'm still figuring out."
+  linkLabel: More about me
+  portraitNote: "Developer & lifelong learner · Vietnam"
+  portraitInitials: DT
+
+work:
+  eyebrow: Selected work
+  title: My projects highlight
+  linkLabel: Explore all projects
+
+notes:
+  eyebrow: Writing
+  title: Notes along the way
+  linkLabel: Read the blog
+
+principles:
+  eyebrow: How I work
+  title: A few things I keep coming back to.

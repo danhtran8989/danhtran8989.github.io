@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { notfoundConfig } from '../data/config';
+
+const { title, lede, buttonLabel, links } = notfoundConfig;
+---
+
+<Layout title={`Page not found — ${site.name}`} description={lede}>
+	<PageHero path="/404" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container not-found">
+			<a class="btn" href="/">
+				{buttonLabel} <Icon name="right" />
+			</a>
+			<div class="not-found__links">
+				{links.map((link) => (
+					<a class="link-arrow" href={link.href}>
+						{link.label} <Icon name="up-right" />
+					</a>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.not-found {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 32px;
+		flex-wrap: wrap;
+	}
+
+	.not-found__links {
+		display: flex;
+		gap: 28px;
+		flex-wrap: wrap;
+		font-size: 15px;
+	}
+</style>

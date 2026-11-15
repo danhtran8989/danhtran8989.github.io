@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { certificates, site } from '../data/site';
+import { certificatesConfig } from '../data/config';
+
+const { title, lede, sectionEyebrow, sectionNote, learningBand } = certificatesConfig;
+---
+
+<Layout
+	title={`Certificates — ${site.name}`}
+	description="Course completions, programs, and learning milestones."
+>
+	<PageHero path="/certificates" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">{sectionEyebrow}</p>
+				<p class="section-note">{sectionNote}</p>
+			</div>
+
+			<ul class="cert-grid">
+				{
+					certificates.map((certificate) => (
+						<li class="cert-card">
+							<span class="cert-index">{certificate.index}</span>
+							<p class="eyebrow cert-type">{certificate.type}</p>
+							<h2 class="cert-title">{certificate.title}</h2>
+							<p class="cert-issuer">{certificate.issuer}</p>
+							<p class="cert-desc">{certificate.description}</p>
+							<a class="link-arrow cert-link" href="#" aria-label={`View certificate: ${certificate.title}`}>
+								View certificate <Icon name="up-right" />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+
+			<div class="learning-band">
+				<h2 class="band-title">{learningBand.title}</h2>
+				<div class="band-copy">
+					<p>{learningBand.question}</p>
+					<a class="link-arrow" href="/certifications">
+						{learningBand.linkLabel} <Icon name="right" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.cert-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+		gap: clamp(20px, 2.6vw, 32px);
+	}
+
+	.cert-card {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		padding: clamp(24px, 2.6vw, 32px);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		background: var(--surface);
+		transition:
+			border-color 200ms ease,
+			box-shadow 200ms ease,
+			transform 200ms ease;
+	}
+
+	.cert-card:hover {
+		transform: translateY(-2px);
+		border-color: var(--line-strong);
+		box-shadow: var(--shadow-md);
+	}
+
+	.cert-index {
+		font-family: var(--font-display);
+		font-size: clamp(26px, 2.6vw, 32px);
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -0.03em;
+		color: var(--accent);
+	}
+
+	.cert-type {
+		margin-top: 24px;
+		font-size: 10px;
+	}
+
+	.cert-title {
+		margin-top: 12px;
+		font-size: clamp(21px, 2vw, 25px);
+		font-weight: 600;
+		line-height: 1.18;
+		letter-spacing: -0.025em;
+	}
+
+	.cert-issuer {
+		margin-top: 6px;
+		font-size: 13.5px;
+		color: var(--muted);
+	}
+
+	.cert-desc {
+		margin-top: 18px;
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+
+	.cert-link {
+		margin-top: 28px;
+		padding-top: 18px;
+		border-top: 1px solid var(--line);
+		font-size: 13px;
+		letter-spacing: 0.04em;
+	}
+
+	.learning-band {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		align-items: center;
+		gap: clamp(24px, 3vw, 40px);
+		margin-top: clamp(28px, 3vw, 40px);
+		padding: clamp(30px, 4vw, 54px);
+		overflow: hidden;
+		border-radius: var(--radius-md);
+		background:
+			radial-gradient(70% 70% at 88% 0%, rgba(167, 139, 250, 0.34), transparent 64%),
+			linear-gradient(155deg, var(--panel-2), var(--panel));
+		color: var(--on-panel);
+	}
+
+	.learning-band::before {
+		content: '';
+		position: absolute;
+		right: -12%;
+		bottom: -46%;
+		width: 46%;
+		aspect-ratio: 1;
+		border: 1px solid var(--panel-line);
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.band-title {
+		position: relative;
+		z-index: 1;
+		max-width: 16ch;
+		font-size: clamp(26px, 3vw, 40px);
+		font-weight: 600;
+		line-height: 1.08;
+		letter-spacing: -0.035em;
+	}
+
+	.band-copy {
+		position: relative;
+		z-index: 1;
+		font-size: 15px;
+		line-height: 1.7;
+		color: var(--panel-muted);
+	}
+
+	.band-copy .link-arrow {
+		margin-top: 6px;
+		font-size: 14px;
+		color: var(--panel-accent);
+	}
+
+	.band-copy .link-arrow:hover {
+		color: var(--on-panel);
+	}
+
+	@media (max-width: 760px) {
+		.learning-band {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 12px;
+		}
+	}
+</style>

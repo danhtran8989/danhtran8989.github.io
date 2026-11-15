@@ -1,0 +1,115 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+import SearchDialog from './SearchDialog.astro';
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+function isActive(href: string) {
+	if (href === '/') return path === '/' || path === '/about';
+	return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a class="brand" href="/" aria-label={`${site.name} — home`}>
+			{site.name}<span>.</span>
+		</a>
+
+		<div class="header-end">
+			<nav class="primary-nav" aria-label="Primary">
+				{
+					site.nav.map((item) => (
+						<a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+							{item.label}
+						</a>
+					))
+				}
+			</nav>
+
+			<div class="header-actions">
+				<button
+					class="search-trigger"
+					type="button"
+					data-search-open
+					aria-label="Search this site"
+					aria-haspopup="dialog"
+					aria-keyshortcuts="Control+K Meta+K"
+				>
+					<Icon name="search" class="search-trigger__icon" />
+					<span class="search-trigger__label">Search</span>
+					<kbd class="search-trigger__key" data-search-key>Ctrl K</kbd>
+				</button>
+
+				<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme" title="Switch theme">
+					<Icon name="sun" class="theme-icon icon-sun" />
+					<Icon name="moon" class="theme-icon icon-moon" />
+				</button>
+
+				<button
+					class="menu-toggle"
+					type="button"
+					data-menu-toggle
+					aria-expanded="false"
+					aria-controls="mobile-nav"
+					aria-label="Open menu"
+				>
+					<Icon name="menu" class="menu-icon" />
+					<Icon name="close" class="close-icon" />
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="mobile-nav" id="mobile-nav" data-mobile-nav data-open="false" aria-hidden="true" inert>
+		<div class="mobile-nav__inner">
+			<nav class="container" aria-label="Mobile">
+				<ul>
+					{
+						site.nav.map((item) => (
+							<li>
+								<a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+									{item.label}
+									<Icon name="up-right" />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>
+
+<SearchDialog />
+
+<script>
+	const menuToggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+	const mobileNav = document.querySelector<HTMLElement>('[data-mobile-nav]');
+
+	if (menuToggle && mobileNav) {
+		const setOpen = (open: boolean) => {
+			mobileNav.dataset.open = String(open);
+			mobileNav.setAttribute('aria-hidden', String(!open));
+			mobileNav.toggleAttribute('inert', !open);
+			menuToggle.setAttribute('aria-expanded', String(open));
+			menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+		};
+
+		menuToggle.addEventListener('click', () => {
+			setOpen(mobileNav.dataset.open !== 'true');
+		});
+
+		mobileNav.addEventListener('click', (event) => {
+			if ((event.target as HTMLElement).closest('a')) setOpen(false);
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && mobileNav.dataset.open === 'true') {
+				setOpen(false);
+				menuToggle.focus();
+			}
+		});
+	}
+</script>

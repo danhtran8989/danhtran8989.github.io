@@ -1,0 +1,332 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+import { resumeConfig } from '../data/config';
+
+const { title, lede, card, side } = resumeConfig;
+
+const profile = card.sections.find((section) => section.eyebrow === 'Profile');
+const experience = card.sections.find((section) => section.eyebrow === 'Experience');
+const selected = card.sections.find((section) => section.eyebrow === 'Selected project');
+const education = card.sections.find((section) => section.eyebrow === 'Education');
+const skills = card.sections.find((section) => section.eyebrow === 'Skills');
+---
+<Layout title={`Resume — ${site.name}`} description={lede}>
+	<PageHero path="/resume" title={title} lede={lede} />
+
+	<section class="section">
+		<div class="container resume-grid">
+			<article class="resume-card">
+				<header class="resume-head">
+					<h2 class="resume-name">{site.name}</h2>
+					<p class="resume-meta">{card.meta}</p>
+				</header>
+
+				<section class="resume-block">
+					<p class="eyebrow">{profile.eyebrow}</p>
+					<p class="resume-copy">{profile.copy}</p>
+				</section>
+
+				<section class="resume-block">
+					<p class="eyebrow">{experience.eyebrow}</p>
+					<div class="resume-role">
+						<h3>{experience.role}</h3>
+						<span class="resume-dates">{experience.dates}</span>
+					</div>
+					<ul class="resume-bullets">
+						{experience.bullets.map((bullet) => <li>{bullet}</li>)}
+					</ul>
+				</section>
+
+				<section class="resume-block">
+					<p class="eyebrow">{selected.eyebrow}</p>
+					<h3 class="resume-project">{selected.project}</h3>
+					<p class="resume-copy">{selected.copy}</p>
+				</section>
+
+				<section class="resume-block resume-columns">
+					<div>
+						<p class="eyebrow">{education.eyebrow}</p>
+						<p class="resume-copy">{education.copy}</p>
+						<p class="resume-copy resume-copy--muted">{education.muted}</p>
+					</div>
+					<div>
+						<p class="eyebrow">{skills.eyebrow}</p>
+						<p class="resume-copy">{skills.copy}</p>
+						<p class="resume-copy resume-copy--muted">{skills.muted}</p>
+					</div>
+				</section>
+			</article>
+
+			<aside class="resume-side">
+				<div class="intro-card">
+					<p class="eyebrow intro-card__eyebrow">{side.intro.eyebrow}</p>
+					<p class="intro-card__title">{side.intro.title}</p>
+					<button class="btn btn--dark btn--block intro-card__btn" type="button" data-print>
+						{side.intro.downloadLabel} <Icon name="down" />
+					</button>
+				</div>
+
+				<div class="side-note">
+					<p class="eyebrow">{side.note.eyebrow}</p>
+					<p>{side.note.text}</p>
+				</div>
+
+				<div class="side-next">
+					<h3>{side.next.title}</h3>
+					<a class="link-arrow link-arrow--accent" href={side.next.href}>
+						{side.next.linkLabel} <Icon name="right" />
+					</a>
+				</div>
+			</aside>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.resume-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(280px, 330px);
+		gap: clamp(36px, 4.5vw, 56px);
+		align-items: start;
+	}
+
+	.resume-card {
+		padding: clamp(28px, 3.4vw, 44px);
+		border: 1px solid var(--line);
+		border-radius: var(--radius-md);
+		background: var(--surface);
+		box-shadow: var(--shadow-md);
+	}
+
+	.resume-name {
+		font-size: clamp(32px, 3.4vw, 42px);
+		font-weight: 600;
+		line-height: 1.05;
+		letter-spacing: -0.04em;
+	}
+
+	.resume-meta {
+		margin-top: 8px;
+		font-size: 14px;
+		color: var(--muted);
+	}
+
+	.resume-meta a:hover {
+		color: var(--accent);
+	}
+
+	.resume-head {
+		padding-bottom: clamp(22px, 2.6vw, 30px);
+		border-bottom: 1px solid var(--line);
+	}
+
+	.resume-block {
+		padding-top: clamp(22px, 2.6vw, 30px);
+		border-top: 1px solid var(--line);
+	}
+
+	.resume-head + .resume-block {
+		margin-top: clamp(22px, 2.6vw, 30px);
+		border-top: 0;
+	}
+
+	.resume-copy {
+		margin-top: 10px;
+		font-size: 15.5px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+
+	.resume-copy--muted {
+		margin-top: 4px;
+		opacity: 0.9;
+	}
+
+	.resume-role {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 16px;
+		margin-top: 10px;
+	}
+
+	.resume-role h3,
+	.resume-project {
+		font-size: clamp(20px, 1.9vw, 23px);
+		font-weight: 600;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.resume-dates {
+		font-size: 13px;
+		color: var(--muted);
+		white-space: nowrap;
+	}
+
+	.resume-bullets {
+		display: grid;
+		gap: 6px;
+		margin-top: 12px;
+		padding-left: 1.1em;
+		list-style: disc;
+		font-size: 15.5px;
+		line-height: 1.55;
+		color: var(--muted);
+	}
+
+	.resume-project {
+		margin-top: 10px;
+	}
+
+	.resume-columns {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 28px;
+	}
+
+	.intro-card {
+		position: relative;
+		overflow: hidden;
+		padding: clamp(24px, 2.6vw, 30px);
+		border-radius: var(--radius-md);
+		background:
+			radial-gradient(80% 60% at 84% 2%, rgba(167, 139, 250, 0.34), transparent 66%),
+			linear-gradient(160deg, var(--panel-2), var(--panel));
+		color: var(--on-panel);
+		box-shadow: var(--shadow-md);
+	}
+
+	.intro-card::before {
+		content: '';
+		position: absolute;
+		top: -26%;
+		right: -32%;
+		width: 96%;
+		aspect-ratio: 1;
+		border: 1px solid var(--panel-line);
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.intro-card > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.intro-card__eyebrow {
+		color: var(--panel-accent);
+	}
+
+	.intro-card__title {
+		margin-top: 26px;
+		margin-bottom: 28px;
+		font-family: var(--font-display);
+		font-size: clamp(28px, 2.7vw, 34px);
+		font-weight: 600;
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+	}
+
+	.intro-card__btn {
+		background: var(--on-panel);
+		color: var(--panel);
+	}
+
+	.intro-card__btn:hover {
+		background: var(--panel-accent);
+		color: var(--panel);
+	}
+
+	.side-note {
+		margin-top: clamp(28px, 3.2vw, 38px);
+	}
+
+	.side-note p:not(.eyebrow) {
+		margin-top: 12px;
+		font-size: 15px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+
+	.side-next {
+		margin-top: clamp(28px, 3.2vw, 38px);
+		padding-top: clamp(24px, 2.8vw, 32px);
+		border-top: 1px solid var(--line);
+	}
+
+	.side-next h3 {
+		font-size: 19px;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+	}
+
+	.side-next .link-arrow {
+		margin-top: 12px;
+		font-size: 15px;
+	}
+
+	@media (max-width: 940px) {
+		.resume-grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.resume-side {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 28px;
+		}
+
+		.intro-card {
+			grid-row: span 2;
+		}
+
+		.side-note,
+		.side-next {
+			margin-top: 0;
+		}
+
+		.side-next {
+			padding-top: 22px;
+		}
+	}
+
+	@media (max-width: 620px) {
+		.resume-side {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.intro-card {
+			grid-row: auto;
+		}
+
+		.resume-role {
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		.resume-columns {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 22px;
+		}
+	}
+
+	@media print {
+		.resume-side {
+			display: none;
+		}
+
+		.resume-grid {
+			display: block;
+		}
+
+		.resume-card {
+			border: 0;
+			padding: 0;
+			box-shadow: none;
+		}
+	}
+</style>

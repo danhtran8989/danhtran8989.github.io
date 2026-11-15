@@ -1,0 +1,110 @@
+title: Notes along the way.
+lede: Ideas, experiments, and lessons worth sharing.
+featuredLabel: Sample article
+latestLabel: Latest notes
+latestNote: "Sample writing — replace with your own posts."
+
+posts:
+  - slug: building-a-personal-corner-of-the-web
+    category: Development
+    title: Building a personal corner of the web.
+    read: 5 min read
+    date: May 2026
+    excerpt: "A small site can be a quiet, durable home for your work. Here is the thinking behind mine."
+    content:
+      - type: p
+        text: "For a long time my work lived in a dozen different places: a folder of screenshots, a few forgotten drafts, and links I kept sending to myself. A personal site gave all of it a home."
+      - type: h2
+        text: Start with a small, honest brief
+      - type: p
+        text: "The brief for this site was deliberately unambitious. It needed to load quickly, read well on a phone, and be easy to update from a text file. Anything that did not help with those three things was left for later."
+      - type: ul
+        items:
+          - Write for the person you were two years ago.
+          - Choose a small set of type sizes and stick to them.
+          - Make the first screen useful without any scrolling.
+      - type: h2
+        text: Design for the long version of you
+      - type: p
+        text: "Trends move faster than personal sites. I wanted something quiet enough to still feel right after a year, with a palette that could shift without rebuilding the whole thing. Tokens make that possible: change a handful of colors, and the entire site follows."
+      - type: blockquote
+        text: "A personal site is less of a launch and more of a place to keep coming back to."
+      - type: p
+        text: "The result is intentionally plain. No feed, no algorithm, no notifications. Just a few pages that I can point to when someone asks what I have been working on."
+
+  - slug: learning-in-public
+    category: Learning
+    title: Learning in public, one small step at a time
+    read: 4 min read
+    date: April 2026
+    excerpt: "Sharing the messy middle of learning is more useful than waiting for perfect answers."
+    content:
+      - type: p
+        text: "Most learning happens in the messy middle: the part where you understand enough to be curious, but not enough to sound impressive. That is also the part most people hide."
+      - type: h2
+        text: The messy middle is the useful part
+      - type: p
+        text: "When I only publish finished work, I lose the notes that helped me get there. Sharing a short entry while the problem is still fresh turns a private struggle into something another person can recognize."
+      - type: ul
+        items:
+          - Write one paragraph while the problem is still annoying.
+          - Name the thing you got wrong, not just the thing you fixed.
+          - Link the source that finally made it click.
+      - type: h2
+        text: A small habit, repeated
+      - type: p
+        text: "I keep a plain text file for each project. At the end of a session I add three lines: what I tried, what happened, and what I will try next. Over a month, those lines become a record of progress that is far more honest than a highlight reel."
+      - type: p
+        text: "The goal is not to teach from a stage. It is to leave a trail that is easy to follow, both for other people and for my future self."
+
+  - slug: from-idea-to-finished-project
+    category: Process
+    title: From a rough idea to a finished project
+    read: 6 min read
+    date: March 2026
+    excerpt: "A practical loop for turning a vague idea into something small enough to finish."
+    content:
+      - type: p
+        text: "A vague idea feels exciting because everything is still possible. The trouble is that everything being possible is also why it never gets finished."
+      - type: h2
+        text: Make the idea smaller
+      - type: p
+        text: "Before writing any code, I write a single sentence describing what the project does for one person. If the sentence needs a comma to explain itself, the idea is still too large."
+      - type: ul
+        items:
+          - Pick one user and one problem.
+          - Define the smallest version that is still useful.
+          - Set a deadline short enough to stay focused.
+      - type: p
+        text: "Then I build the least interesting part first. For a website that means the layout and copy; for a tool it means the data and the edge cases. The fun parts are easier to finish once the foundation is boring and stable."
+      - type: h2
+        text: Finish, then improve
+      - type: p
+        text: "Shipping is a skill you practice, not a reward you earn. A finished version gives you something concrete to react to, and real feedback beats another week of imagining."
+      - type: p
+        text: "After the first release I keep a short list of improvements, but I do not start them until I have used the thing myself for a week. Half the list usually disappears."
+
+  - slug: small-details-that-make-a-website-feel-better
+    category: Development
+    title: Small details that make a website feel better
+    read: 5 min read
+    date: February 2026
+    excerpt: "Typography, spacing, and motion do more for a page than most people notice."
+    content:
+      - type: p
+        text: "People rarely compliment a website for its line height. They just notice that reading it feels easy. Most of the quality of an interface lives in details that are hard to name."
+      - type: h2
+        text: Typography carries the page
+      - type: p
+        text: "A small number of sizes, used consistently, will do more than a dozen carefully chosen fonts. I try to keep headings closer in size than feels comfortable at first, then let weight and spacing do the separating."
+      - type: ul
+        items:
+          - Set body text between 60 and 75 characters per line.
+          - Use tighter tracking on large headings and looser tracking on small labels.
+          - Give links a visible hover state that does not move the layout.
+      - type: h2
+        text: Space is a feature
+      - type: p
+        text: "Whitespace is not empty space. It is the pause that tells a reader where one idea ends and the next begins. When a layout feels crowded, removing an element is usually better than shrinking the gaps."
+      - type: p
+        text: "The same is true of motion. A 150ms transition on a link is enough to feel responsive; anything longer starts to feel like the page is thinking about it."

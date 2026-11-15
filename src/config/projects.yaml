@@ -1,0 +1,34 @@
+title: Work in progress.
+lede: A few things I'm building, exploring, and improving.
+sectionEyebrow: Current projects
+sectionNote: "Sample projects · Replace with your own work"
+labels:
+  scope: Scope
+  stack: Stack
+
+projects:
+  - eyebrow: danhtran8989.github.io
+    mark: A space of my own.
+    status: In progress
+    title: Personal portfolio
+    description: "A home for my work, writing, and everything I'm learning."
+    meta: "HTML / CSS · GitHub Pages"
+    href: https://github.com/danhtran8989/danhtran8989.github.io
+  - eyebrow: The learning journal
+    mark: One idea at a time.
+    status: In progress
+    title: Learning journal
+    description: "A growing collection of notes, discoveries, and useful resources."
+    meta: "Markdown · Documentation"
+    href: https://github.com/danhtran8989
+  - eyebrow: Today, with intention
+    mark: Less noise. More focus.
+    status: In progress
+    title: Everyday taskboard
+    description: "A simple way to make space for the work that matters."
+    meta: "JavaScript · Local storage"
+    href: https://github.com/danhtran8989
+
+cta:
+  title: Have an idea worth exploring?
+  linkLabel: Get in touch

@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import { blogPosts, site, type BlogPost } from '../../data/site';
+
+interface Props {
+	post: BlogPost;
+}
+
+export function getStaticPaths() {
+	return blogPosts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout title={`${post.title} — ${site.name}`} description={post.excerpt}>
+	<PageHero path={`/blog/${post.slug}`} title={post.title} lede={post.excerpt} />
+
+	<section class="section">
+		<div class="container article-grid">
+			<div class="prose">
+				{
+					post.content.map((block) => {
+						if (block.type === 'h2') return <h2>{block.text}</h2>;
+						if (block.type === 'ul') {
+							return (
+								<ul>
+									{block.items.map((item) => (
+										<li>{item}</li>
+									))}
+								</ul>
+							);
+						}
+						if (block.type === 'blockquote') return <blockquote>{block.text}</blockquote>;
+						return <p>{block.text}</p>;
+					})
+				}
+			</div>
+
+			<aside class="article-rail" aria-label="Article details">
+				<div class="rail-item">
+					<span class="rail-label">Filed under</span>
+					<span class="rail-value">{post.category}</span>
+				</div>
+				<div class="rail-item">
+					<span class="rail-label">Published</span>
+					<span class="rail-value">{post.date}</span>
+				</div>
+				<div class="rail-item">
+					<span class="rail-label">Reading time</span>
+					<span class="rail-value">{post.read}</span>
+				</div>
+				<a class="link-arrow rail-back" href="/blog">
+					<Icon name="right" /> All notes
+				</a>
+			</aside>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.article-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 270px;
+		gap: clamp(40px, 6vw, 80px);
+		align-items: start;
+	}
+
+	.article-rail {
+		position: sticky;
+		top: calc(var(--header-height) + 28px);
+		display: grid;
+		gap: 22px;
+		padding-left: clamp(20px, 2.5vw, 32px);
+		border-left: 1px solid var(--line);
+	}
+
+	.rail-item {
+		display: grid;
+		gap: 4px;
+	}
+
+	.rail-label {
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.rail-value {
+		font-family: var(--font-display);
+		font-size: 16px;
+		font-weight: 500;
+	}
+
+	.rail-back {
+		margin-top: 10px;
+		font-size: 15px;
+	}
+
+	@media (max-width: 860px) {
+		.article-grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.article-rail {
+			position: static;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			padding: 24px 0 0;
+			border-left: 0;
+			border-top: 1px solid var(--line);
+		}
+
+		.rail-back {
+			grid-column: 1 / -1;
+			margin-top: 4px;
+		}
+	}
+</style>

@@ -1,11 +1,502 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { blogPosts, projectLabels, projects, site } from '../data/site';
+import { aboutConfig, homeConfig } from '../data/config';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const { hero, about, work, notes, principles: principlesHead } = homeConfig;
+const { principles } = aboutConfig;
+
+const featured = projects.slice(0, 2);
+const recentPosts = blogPosts.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout description={hero.lede}>
+	<section class="home-hero">
+		<div class="container home-hero__inner">
+			<p class="eyebrow">
+				<span class="eyebrow__dot" aria-hidden="true"></span>
+				{hero.eyebrow}
+			</p>
+			<h1 class="home-hero__title">
+				{hero.title}
+				<span>{hero.titleAccent}</span>
+			</h1>
+			<p class="home-hero__lede">{hero.lede}</p>
+			<div class="home-hero__actions">
+				<a class="btn" href="/projects">
+					{hero.primaryLabel}
+					<Icon name="right" />
+				</a>
+				<a class="btn btn--outline" href="/about">{hero.secondaryLabel}</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section home-about">
+		<div class="container home-about__grid">
+			<div class="home-about__copy">
+				<p class="eyebrow eyebrow--accent">{about.eyebrow}</p>
+				<h2 class="home-heading">{about.title}</h2>
+				<p class="home-body">{about.body}</p>
+				<a class="btn btn--outline" href="/about">
+					{about.linkLabel}
+					<Icon name="right" />
+				</a>
+			</div>
+
+			<div class="portrait" aria-hidden="true">
+				<div class="portrait__frame">
+					<span class="portrait__initials">{about.portraitInitials}</span>
+					<span class="portrait__note">{about.portraitNote}</span>
+				</div>
+				<span class="portrait__arc portrait__arc--a"></span>
+				<span class="portrait__arc portrait__arc--b"></span>
+			</div>
+		</div>
+	</section>
+
+	<section class="home-section home-work">
+		<div class="container">
+			<div class="home-center">
+				<p class="eyebrow eyebrow--accent">{work.eyebrow}</p>
+				<h2 class="home-heading home-heading--center">{work.title}</h2>
+				<a class="btn btn--outline" href="/projects">
+					{work.linkLabel}
+					<Icon name="right" />
+				</a>
+			</div>
+
+			<ul class="home-work__grid">
+				{
+					featured.map((project, index) => (
+						<ProjectCard
+							project={project}
+							index={index}
+							labels={projectLabels}
+							showDescription
+						/>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="home-section home-notes">
+		<div class="container">
+			<div class="home-split-head">
+				<div>
+					<p class="eyebrow eyebrow--accent">{notes.eyebrow}</p>
+					<h2 class="home-heading">{notes.title}</h2>
+				</div>
+				<a class="btn btn--outline" href="/blog">
+					{notes.linkLabel}
+					<Icon name="right" />
+				</a>
+			</div>
+
+			<ul class="home-notes__list">
+				{
+					recentPosts.map((post) => (
+						<li>
+							<a class="home-note" href={`/blog/${post.slug}`}>
+								<span class="home-note__date">{post.date}</span>
+								<span class="home-note__title">{post.title}</span>
+								<Icon name="up-right" class="home-note__arrow" />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="home-section home-principles">
+		<div class="container">
+			<div class="home-split-head">
+				<div>
+					<p class="eyebrow eyebrow--accent">{principlesHead.eyebrow}</p>
+					<h2 class="home-heading">{principlesHead.title}</h2>
+				</div>
+			</div>
+
+			<ul class="home-principles__list">
+				{
+					principles.map((item) => (
+						<li class="home-principle">
+							<span class="home-principle__index">{item.index}</span>
+							<h3 class="home-principle__title">{item.title}</h3>
+							<p class="home-principle__copy">{item.description}</p>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
 </Layout>
+
+<style>
+	.home-hero {
+		position: relative;
+		overflow: hidden;
+		padding-block: clamp(78px, 11vw, 150px) clamp(64px, 8vw, 108px);
+		text-align: center;
+	}
+
+	.home-hero::before {
+		content: '';
+		position: absolute;
+		top: -42%;
+		left: 50%;
+		width: min(1150px, 128vw);
+		height: min(980px, 120vw);
+		transform: translateX(-50%);
+		background: radial-gradient(closest-side, var(--accent-glow), transparent 72%);
+		pointer-events: none;
+	}
+
+	.home-hero__inner {
+		position: relative;
+		z-index: 1;
+	}
+
+	.home-hero .eyebrow {
+		justify-content: center;
+	}
+
+	.home-hero__title {
+		max-width: 18ch;
+		margin: clamp(22px, 3vw, 34px) auto 0;
+		font-size: clamp(42px, 7.4vw, 94px);
+		font-weight: 600;
+		line-height: 1;
+		letter-spacing: -0.05em;
+	}
+
+	.home-hero__title span {
+		display: block;
+		background: linear-gradient(100deg, var(--accent) 10%, color-mix(in srgb, var(--accent) 45%, var(--ink)) 90%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	.home-hero__lede {
+		max-width: 52ch;
+		margin: clamp(20px, 2.4vw, 28px) auto 0;
+		font-size: clamp(15px, 1.25vw, 17px);
+		line-height: 1.65;
+		color: var(--muted);
+	}
+
+	.home-hero__actions {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		flex-wrap: wrap;
+		margin-top: clamp(28px, 3.4vw, 40px);
+	}
+
+	.home-section {
+		padding-block: clamp(46px, 6vw, 84px);
+	}
+
+	.home-heading {
+		margin-top: 16px;
+		max-width: 19ch;
+		font-size: clamp(30px, 4vw, 54px);
+		font-weight: 600;
+		line-height: 1.04;
+		letter-spacing: -0.04em;
+	}
+
+	.home-heading--center {
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.home-about__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.85fr);
+		align-items: center;
+		gap: clamp(36px, 6vw, 90px);
+	}
+
+	.home-body {
+		margin-top: 20px;
+		max-width: 50ch;
+		font-size: clamp(15px, 1.3vw, 17px);
+		line-height: 1.7;
+		color: var(--muted);
+	}
+
+	.home-about .btn,
+	.home-work .btn {
+		margin-top: 30px;
+	}
+
+	.portrait {
+		position: relative;
+		justify-self: end;
+		width: min(100%, 400px);
+	}
+
+	.portrait__frame {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		aspect-ratio: 4 / 5;
+		padding: clamp(20px, 2.2vw, 28px);
+		overflow: hidden;
+		border-radius: var(--radius-md);
+		background:
+			radial-gradient(70% 55% at 70% 16%, rgba(167, 139, 250, 0.52), transparent 62%),
+			radial-gradient(60% 60% at 20% 86%, rgba(76, 29, 149, 0.72), transparent 66%),
+			linear-gradient(160deg, #1b1028, #0a0611);
+		color: #f4efff;
+	}
+
+	.portrait__frame::before {
+		content: '';
+		position: absolute;
+		top: 16%;
+		right: -22%;
+		width: 78%;
+		aspect-ratio: 1;
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		border-radius: 50%;
+	}
+
+	.portrait__frame::after {
+		content: '';
+		position: absolute;
+		bottom: 22%;
+		left: -14%;
+		width: 46%;
+		aspect-ratio: 1;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 50%;
+	}
+
+	.portrait__initials {
+		position: relative;
+		z-index: 1;
+		margin-top: auto;
+		font-family: var(--font-display);
+		font-size: clamp(76px, 8.6vw, 118px);
+		font-weight: 700;
+		line-height: 0.9;
+		letter-spacing: -0.06em;
+	}
+
+	.portrait__note {
+		position: relative;
+		z-index: 1;
+		margin-top: clamp(18px, 2vw, 26px);
+		font-size: 10px;
+		font-weight: 500;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.portrait__arc {
+		position: absolute;
+		border: 1px solid var(--accent);
+		border-radius: 50%;
+		pointer-events: none;
+	}
+
+	.portrait__arc--a {
+		top: -18px;
+		right: -18px;
+		width: 84px;
+		height: 84px;
+		opacity: 0.55;
+	}
+
+	.portrait__arc--b {
+		left: -22px;
+		bottom: 44px;
+		width: 46px;
+		height: 96px;
+		border-radius: 96px;
+		border-left-color: transparent;
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+		opacity: 0.45;
+	}
+
+	.home-center {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		text-align: center;
+		margin-bottom: clamp(32px, 4vw, 52px);
+	}
+
+	.home-center .home-heading {
+		margin-top: 0;
+		max-width: 20ch;
+	}
+
+	.home-center .btn {
+		margin-top: 8px;
+	}
+
+	.home-work__grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(28px, 3.6vw, 52px);
+	}
+
+	.home-split-head {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 24px;
+		margin-bottom: clamp(24px, 3vw, 38px);
+	}
+
+	.home-split-head .home-heading {
+		max-width: 22ch;
+	}
+
+	.home-split-head .btn {
+		flex: none;
+	}
+
+	.home-notes__list {
+		border-top: 1px solid var(--line);
+	}
+
+	.home-note {
+		display: grid;
+		grid-template-columns: 124px minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 24px;
+		padding: 22px 2px;
+		border-bottom: 1px solid var(--line);
+		transition: color 160ms ease;
+	}
+
+	.home-note:hover {
+		color: var(--accent);
+	}
+
+	.home-note__date {
+		font-size: 10.5px;
+		font-weight: 500;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--muted);
+	}
+
+	.home-note__title {
+		font-family: var(--font-display);
+		font-size: clamp(17px, 1.7vw, 22px);
+		font-weight: 500;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.home-note :global(.home-note__arrow) {
+		width: 18px;
+		height: 18px;
+		color: var(--muted);
+		transition:
+			transform 160ms ease,
+			color 160ms ease;
+	}
+
+	.home-note:hover :global(.home-note__arrow) {
+		transform: translate(2px, -2px);
+		color: var(--accent);
+	}
+
+	.home-principles__list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: clamp(22px, 3.4vw, 48px);
+		margin-top: clamp(26px, 3vw, 38px);
+	}
+
+	.home-principle {
+		padding-top: 20px;
+		border-top: 1px solid var(--line);
+	}
+
+	.home-principle__index {
+		font-family: var(--font-display);
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		color: var(--accent);
+	}
+
+	.home-principle__title {
+		margin-top: 18px;
+		font-size: clamp(19px, 1.8vw, 23px);
+		font-weight: 600;
+	}
+
+	.home-principle__copy {
+		margin-top: 8px;
+		font-size: 14.5px;
+		line-height: 1.6;
+		color: var(--muted);
+	}
+
+	@media (max-width: 900px) {
+		.home-about__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.portrait {
+			justify-self: start;
+			width: min(100%, 360px);
+		}
+
+		.home-work__grid {
+			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.home-principles__list {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 24px;
+		}
+	}
+
+	@media (max-width: 700px) {
+		.home-split-head {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 16px;
+		}
+
+		.home-note {
+			grid-template-columns: minmax(0, 1fr) auto;
+			gap: 6px 18px;
+			padding: 20px 2px;
+		}
+
+		.home-note__date {
+			grid-column: 1;
+			grid-row: 1;
+		}
+
+		.home-note__title {
+			grid-column: 1;
+			grid-row: 2;
+		}
+
+		.home-note :global(.home-note__arrow) {
+			grid-column: 2;
+			grid-row: 1 / span 2;
+		}
+	}
+</style>
